@@ -5,13 +5,15 @@ import { calculators } from '../data/calculators';
 import { categories } from '../data/categories';
 import { guides } from '../data/guides';
 import SEO from './SEO';
+import { isFavorite, toggleFavorite, addToHistory } from '../lib/preferences';
 
 interface CalculatorViewProps {
   calculatorSlug: string;
   onNavigate: (route: string) => void;
+  initialOverrides?: Record<string, any>;
 }
 
-export default function CalculatorView({ calculatorSlug, onNavigate }: CalculatorViewProps) {
+export default function CalculatorView({ calculatorSlug, onNavigate, initialOverrides }: CalculatorViewProps) {
   const calculator = calculators.find((calc) => calc.slug === calculatorSlug);
 
   // Fallback if calculator not found
@@ -36,21 +38,42 @@ export default function CalculatorView({ calculatorSlug, onNavigate }: Calculato
 
   // Manage calculator inputs state dynamically
   const [inputs, setInputs] = useState<Record<string, any>>(() => {
+    try {
+      const savedOverride = sessionStorage.getItem(`override_${calculatorSlug}`);
+      if (savedOverride) {
+        sessionStorage.removeItem(`override_${calculatorSlug}`);
+        return JSON.parse(savedOverride);
+      }
+    } catch (e) {}
+
     const defaultVals: Record<string, any> = {};
     calculator.inputs.forEach((input) => {
-      defaultVals[input.id] = input.defaultValue;
+      defaultVals[input.id] = initialOverrides && initialOverrides[input.id] !== undefined
+        ? initialOverrides[input.id]
+        : input.defaultValue;
     });
     return defaultVals;
   });
 
-  // Re-initialize state if calculatorSlug changes
+  // Re-initialize state if calculatorSlug or initialOverrides changes
   useEffect(() => {
+    try {
+      const savedOverride = sessionStorage.getItem(`override_${calculatorSlug}`);
+      if (savedOverride) {
+        sessionStorage.removeItem(`override_${calculatorSlug}`);
+        setInputs(JSON.parse(savedOverride));
+        return;
+      }
+    } catch (e) {}
+
     const defaultVals: Record<string, any> = {};
     calculator.inputs.forEach((input) => {
-      defaultVals[input.id] = input.defaultValue;
+      defaultVals[input.id] = initialOverrides && initialOverrides[input.id] !== undefined
+        ? initialOverrides[input.id]
+        : input.defaultValue;
     });
     setInputs(defaultVals);
-  }, [calculatorSlug]);
+  }, [calculatorSlug, JSON.stringify(initialOverrides)]);
 
   const handleInputChange = (id: string, val: any) => {
     setInputs((prev) => ({
@@ -59,8 +82,31 @@ export default function CalculatorView({ calculatorSlug, onNavigate }: Calculato
     }));
   };
 
+  // Toggle favorite state
+  const [fav, setFav] = useState(isFavorite(calculator.slug));
+  useEffect(() => {
+    setFav(isFavorite(calculator.slug));
+  }, [calculatorSlug]);
+
+  const handleToggleFavorite = () => {
+    const isNowFav = toggleFavorite(calculator.slug);
+    setFav(isNowFav);
+  };
+
   // Run calculation engine
   const result = calculator.calculate(inputs);
+
+  // Save to history log on calculation updates
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (result && result.summary && result.summary.length > 0) {
+        const topResult = result.summary[0];
+        const summaryText = `${topResult.label}: ${topResult.value}`;
+        addToHistory(calculator.slug, calculator.name, inputs, summaryText);
+      }
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [inputs, calculator.slug, calculator.name]);
 
   // Accordion state for FAQs
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -250,14 +296,29 @@ export default function CalculatorView({ calculatorSlug, onNavigate }: Calculato
         <span className="text-slate-800 dark:text-slate-200 font-medium">{calculator.name}</span>
       </nav>
 
-      {/* Header Info Block */}
-      <div className="space-y-3">
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-          {calculator.name}
-        </h1>
-        <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base max-w-3xl leading-relaxed">
-          {calculator.shortDescription}
-        </p>
+      {/* Header Info Block with Favorite Toggle */}
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 py-1">
+        <div className="space-y-3 flex-1">
+          <div className="flex items-center gap-3 animate-fade-in">
+            <h1 className="font-display text-2xl sm:text-4xl font-black text-slate-950 dark:text-white tracking-tight">
+              {calculator.name}
+            </h1>
+            <button
+              onClick={handleToggleFavorite}
+              title={fav ? 'Remove from Favorites' : 'Add to Favorites'}
+              className="p-2 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs hover:scale-105 transition-all cursor-pointer text-yellow-500 hover:text-yellow-600 dark:text-yellow-400"
+            >
+              {fav ? (
+                <Lucide.Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+              ) : (
+                <Lucide.Star className="w-4 h-4 text-slate-300 dark:text-slate-600 fill-none" />
+              )}
+            </button>
+          </div>
+          <p className="text-slate-500 dark:text-slate-400 text-sm max-w-3xl leading-relaxed">
+            {calculator.shortDescription}
+          </p>
+        </div>
       </div>
 
       {/* Ads Placeholder */}

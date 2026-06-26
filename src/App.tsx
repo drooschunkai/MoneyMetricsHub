@@ -7,6 +7,14 @@ import GuideView from './components/GuideView';
 import SearchView from './components/SearchView';
 import { AboutView, ContactView, PrivacyView, TermsView, DisclaimerView } from './components/LegalViews';
 
+// Register Phase 3 Premium Core Components
+import ProgrammaticSEOView from './components/ProgrammaticSEOView';
+import UserHub from './components/UserHub';
+import NewsletterView from './components/NewsletterView';
+import SitemapView from './components/SitemapView';
+import DashboardView from './components/DashboardView';
+import ComparisonView from './components/ComparisonView';
+
 interface RouteState {
   name: string;
   params: Record<string, any>;
@@ -47,7 +55,36 @@ function parseLocation(): RouteState {
     return { name: 'search', params: { q } };
   }
 
-  // 6. Legal and Info pages
+  // 6. Phase 1 Programmatic SEO Template Routes
+  if (path.startsWith('/mortgage/')) {
+    const slug = path.replace('/mortgage/', '');
+    return { name: 'seo-page', params: { slug } };
+  }
+  if (path.startsWith('/compound-interest/')) {
+    const slug = path.replace('/compound-interest/', '');
+    return { name: 'seo-page', params: { slug } };
+  }
+  if (path.startsWith('/retirement/')) {
+    const slug = path.replace('/retirement/', '');
+    return { name: 'seo-page', params: { slug } };
+  }
+  if (path.startsWith('/fire/')) {
+    const slug = path.replace('/fire/', '');
+    return { name: 'seo-page', params: { slug } };
+  }
+  if (path.startsWith('/salary/')) {
+    const slug = path.replace('/salary/', '');
+    return { name: 'seo-page', params: { slug } };
+  }
+
+  // 7. Phase 3 & 6 Core Navigation Routes
+  if (path === '/newsletter') return { name: 'newsletter', params: {} };
+  if (path === '/sitemap') return { name: 'sitemap', params: {} };
+  if (path === '/dashboard' || path === '/search-console') return { name: 'dashboard', params: {} };
+  if (path === '/compare') return { name: 'compare', params: {} };
+  if (path === '/preferences' || path === '/hub') return { name: 'preferences', params: {} };
+
+  // 8. Legal and Info pages
   if (path === '/about') return { name: 'about', params: {} };
   if (path === '/contact') return { name: 'contact', params: {} };
   if (path === '/privacy') return { name: 'privacy', params: {} };
@@ -97,6 +134,26 @@ export default function App() {
       case 'search':
         return <SearchView initialQuery={route.params.q} onNavigate={handleNavigate} />;
       
+      // Phase 1 Programmatic View Dispatch
+      case 'seo-page':
+        return <ProgrammaticSEOView slug={route.params.slug} onNavigate={handleNavigate} />;
+
+      // Secondary Core Views Dispatch
+      case 'newsletter':
+        return <NewsletterView />;
+      
+      case 'sitemap':
+        return <SitemapView onNavigate={handleNavigate} />;
+      
+      case 'dashboard':
+        return <DashboardView />;
+      
+      case 'compare':
+        return <ComparisonView />;
+      
+      case 'preferences':
+        return <UserHub onNavigate={handleNavigate} />;
+
       case 'about':
         return <AboutView onNavigate={handleNavigate} />;
       

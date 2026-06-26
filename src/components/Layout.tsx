@@ -97,16 +97,22 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
               </div>
 
               <button 
+                onClick={() => onNavigate('compare')} 
+                className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors ${activeRoute === 'compare' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-300'}`}
+              >
+                Compare Scenarios
+              </button>
+              <button 
+                onClick={() => onNavigate('preferences')} 
+                className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors ${activeRoute === 'preferences' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-300'}`}
+              >
+                My Hub
+              </button>
+              <button 
                 onClick={() => onNavigate('about')} 
                 className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors ${activeRoute === 'about' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-300'}`}
               >
                 Methodology
-              </button>
-              <button 
-                onClick={() => onNavigate('contact')} 
-                className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors ${activeRoute === 'contact' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-300'}`}
-              >
-                Support
               </button>
             </nav>
 
@@ -122,6 +128,17 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
                   className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 focus:bg-white dark:focus:bg-slate-900 border border-transparent focus:border-slate-200 dark:focus:border-slate-700 pl-10 pr-4 py-1.5 rounded-full text-xs font-medium outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500 text-slate-700 dark:text-slate-200"
                 />
               </form>
+
+              <button
+                type="button"
+                onClick={() => onNavigate('preferences')}
+                className={`p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full cursor-pointer transition-all duration-205 flex items-center justify-center border border-transparent dark:border-slate-800 ${
+                  activeRoute === 'preferences' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400 hover:text-blue-600'
+                }`}
+                title="My Hub & Favorites"
+              >
+                <Lucide.UserCheck className="w-4 h-4" />
+              </button>
 
               <button
                 type="button"
@@ -197,21 +214,39 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
               <div className="border-t border-slate-100 dark:border-slate-800 pt-2 flex flex-col gap-2">
                 <button
                   onClick={() => {
+                    onNavigate('compare');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-left font-semibold text-slate-700 dark:text-slate-200 text-sm py-1 px-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors"
+                >
+                  Compare Scenarios
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('preferences');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-left font-semibold text-slate-700 dark:text-slate-200 text-sm py-1 px-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors"
+                >
+                  My Hub & Favorites
+                </button>
+                <button
+                  onClick={() => {
+                    onNavigate('newsletter');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-left font-semibold text-slate-700 dark:text-slate-200 text-sm py-1 px-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors"
+                >
+                  Newsletter BRIEFING
+                </button>
+                <button
+                  onClick={() => {
                     onNavigate('about');
                     setMobileMenuOpen(false);
                   }}
                   className="text-left font-semibold text-slate-700 dark:text-slate-200 text-sm py-1 px-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors"
                 >
                   Methodology
-                </button>
-                <button
-                  onClick={() => {
-                    onNavigate('contact');
-                    setMobileMenuOpen(false);
-                  }}
-                  className="text-left font-semibold text-slate-700 dark:text-slate-200 text-sm py-1 px-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors"
-                >
-                  Support
                 </button>
               </div>
             </nav>
@@ -297,15 +332,29 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
               </ul>
             </div>
 
-            {/* Column 4: Trust Verification Badge (Col 2) */}
+            {/* Column 4: XML Sitemaps, Search Console, & Newsletter (Col 2) */}
             <div className="lg:col-span-2 space-y-4">
-              <h4 className="text-xs font-bold text-slate-200 uppercase tracking-widest">Integrity</h4>
-              <div className="p-3.5 bg-slate-800 dark:bg-slate-900/60 rounded-xl border border-slate-800 dark:border-slate-900 flex items-start gap-2 text-[10px] leading-relaxed">
-                <Lucide.ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                <div>
-                  <span className="font-bold text-slate-200 block mb-0.5">Verified Calculation</span>
-                  <span>100% server-free, secure in-browser calculations.</span>
-                </div>
+              <h4 className="text-xs font-bold text-slate-200 uppercase tracking-widest">Sitemaps & Tools</h4>
+              <ul className="space-y-2 text-xs">
+                <li>
+                  <button onClick={() => onNavigate('newsletter')} className="hover:text-white transition-colors cursor-pointer text-left">
+                    Newsletter Signup
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('sitemap')} className="hover:text-white transition-colors cursor-pointer text-left">
+                    HTML Sitemap Index
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('dashboard')} className="hover:text-white transition-colors cursor-pointer text-left">
+                    Search Console Metrics
+                  </button>
+                </li>
+              </ul>
+              <div className="p-3 bg-slate-805 dark:bg-slate-900/45 rounded-xl border border-slate-800 dark:border-slate-900 flex items-start gap-1.5 text-[9px] leading-relaxed">
+                <Lucide.ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <span>Verified client-side calculation engine.</span>
               </div>
             </div>
 
