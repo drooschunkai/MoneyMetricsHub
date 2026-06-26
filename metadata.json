@@ -1,0 +1,6 @@
+{
+  "name": "MoneyMetricsHub",
+  "description": "Free Financial Calculators for Smarter Money Decisions. Calculate investments, mortgages, retirement savings, loans, and more using industry-standard financial formulas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
