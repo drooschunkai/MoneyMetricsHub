@@ -5,7 +5,7 @@ import { calculators } from '../data/calculators';
 import { categories } from '../data/categories';
 import { guides } from '../data/guides';
 import SEO from './SEO';
-import { isFavorite, toggleFavorite, addToHistory } from '../lib/preferences';
+import { isFavorite, toggleFavorite, addToHistory, getPreferences, formatPrefMoney, formatPrefNumber, currencySymbols } from '../lib/preferences';
 
 interface CalculatorViewProps {
   calculatorSlug: string;
@@ -15,6 +15,18 @@ interface CalculatorViewProps {
 
 export default function CalculatorView({ calculatorSlug, onNavigate, initialOverrides }: CalculatorViewProps) {
   const calculator = calculators.find((calc) => calc.slug === calculatorSlug);
+
+  // Listen to preferences state to force-refresh when update event fires
+  const [prefs, setPrefs] = useState(() => getPreferences());
+  useEffect(() => {
+    const handleUpdate = () => {
+      setPrefs(getPreferences());
+    };
+    window.addEventListener('preferences_updated', handleUpdate);
+    return () => {
+      window.removeEventListener('preferences_updated', handleUpdate);
+    };
+  }, []);
 
   // Fallback if calculator not found
   if (!calculator) {
@@ -96,17 +108,50 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
   // Run calculation engine
   const result = calculator.calculate(inputs);
 
+  // Format the outputs according to preferences
+  const formattedSummary = result.summary.map((sum) => {
+    // Determine if we should format with preferences
+    const isCurrency = typeof sum.rawValue === 'number' && (
+      sum.value.includes('$') ||
+      /salary|wage|worth|assets|liabilities|payment|fund|balance|interest|principal|fee|disbursed|payout|contribution|savings|cost|value|erosion/i.test(sum.label)
+    );
+
+    if (isCurrency && sum.rawValue !== undefined) {
+      const isHourly = sum.label.toLowerCase().includes('hourly');
+      return {
+        ...sum,
+        value: formatPrefMoney(sum.rawValue, isHourly ? 2 : 0)
+      };
+    }
+    return sum;
+  });
+
+  const formatTextPreferences = (text: string) => {
+    if (!text) return text;
+    return text.replace(/(-?|\+?)\$(\d{1,3}(?:,\d{3})*(?:\.\d+)?|\d+)/g, (match, sign, numStr) => {
+      const num = parseFloat(numStr.replace(/,/g, ''));
+      if (isNaN(num)) return match;
+      const hasDecimals = numStr.includes('.');
+      const decimalPlaces = hasDecimals ? numStr.split('.')[1].length : 0;
+      
+      const formatted = formatPrefMoney(num, decimalPlaces);
+      return sign === '-' ? `-${formatted}` : `${sign}${formatted}`;
+    });
+  };
+
+  const formattedInterpretation = formatTextPreferences(result.interpretation);
+
   // Save to history log on calculation updates
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (result && result.summary && result.summary.length > 0) {
-        const topResult = result.summary[0];
+      if (formattedSummary && formattedSummary.length > 0) {
+        const topResult = formattedSummary[0];
         const summaryText = `${topResult.label}: ${topResult.value}`;
         addToHistory(calculator.slug, calculator.name, inputs, summaryText);
       }
     }, 1500);
     return () => clearTimeout(timer);
-  }, [inputs, calculator.slug, calculator.name]);
+  }, [inputs, calculator.slug, calculator.name, JSON.stringify(formattedSummary)]);
 
   // Accordion state for FAQs
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -159,7 +204,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
               <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Total</span>
-              <span className="text-base font-bold font-mono text-slate-900 dark:text-white">${Math.round(total).toLocaleString()}</span>
+              <span className="text-base font-bold font-mono text-slate-900 dark:text-white">{formatPrefMoney(total, 0)}</span>
             </div>
           </div>
 
@@ -170,7 +215,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                 <div key={index} className="flex items-center gap-2 text-xs">
                   <div className="w-3.5 h-3.5 rounded-md" style={{ backgroundColor: sliceColors[index % sliceColors.length] }}></div>
                   <span className="text-slate-500 font-medium">{item.name}:</span>
-                  <span className="font-semibold text-slate-800 dark:text-slate-200 font-mono">${Math.round(item.value).toLocaleString()} ({pct}%)</span>
+                  <span className="font-semibold text-slate-800 dark:text-slate-200 font-mono">{formatPrefMoney(item.value, 0)} ({pct}%)</span>
                 </div>
               );
             })}
@@ -200,7 +245,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
         {/* Y-Axis scale references */}
         <div className="flex justify-between text-[10px] font-mono text-slate-400 border-b border-slate-100 dark:border-slate-800 pb-1">
           <span>Growth Path</span>
-          <span>Max: ${Math.round(maxVal).toLocaleString()}</span>
+          <span>Max: {formatPrefMoney(maxVal, 0)}</span>
         </div>
 
         {/* Scaled Columns layout */}
@@ -237,12 +282,12 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                   {keys.map((k) => (
                     <div key={k.key} className="flex gap-2 justify-between">
                       <span className="text-slate-400">{k.label}:</span>
-                      <span>${Math.round(item[k.key] || 0).toLocaleString()}</span>
+                      <span>{formatPrefMoney(item[k.key] || 0, 0)}</span>
                     </div>
                   ))}
                   <div className="border-t border-slate-800 mt-1 pt-1 flex justify-between font-bold text-blue-400">
                     <span>Total:</span>
-                    <span>${Math.round(keys.reduce((s, k) => s + (item[k.key] || 0), 0)).toLocaleString()}</span>
+                    <span>{formatPrefMoney(keys.reduce((s, k) => s + (item[k.key] || 0), 0), 0)}</span>
                   </div>
                 </div>
               </div>
@@ -343,7 +388,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
               <div key={input.id} className="space-y-2">
                 <div className="flex justify-between items-center text-sm">
                   <label htmlFor={`input-${input.id}`} className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
-                    {input.label}
+                    {input.label.replace('($)', `(${currencySymbols[prefs.currency] || '$'})`)}
                     {input.helpText && (
                       <span className="group relative text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 cursor-help">
                         <Lucide.HelpCircle className="w-3.5 h-3.5" />
@@ -356,10 +401,12 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                   
                   {/* Inline numeric display */}
                   <span className="font-mono font-bold text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/40 px-2 py-0.5 rounded text-xs transition-colors">
-                    {input.prefix}
+                    {input.prefix === '$' ? (currencySymbols[prefs.currency] || '$') : input.prefix}
                     {input.type === 'select' 
                       ? input.options?.find((o) => o.value === Number(inputs[input.id]))?.label || inputs[input.id]
-                      : Number(inputs[input.id]).toLocaleString()}
+                      : input.prefix === '$'
+                        ? formatPrefNumber(Number(inputs[input.id]))
+                        : Number(inputs[input.id]).toLocaleString()}
                     {input.suffix}
                   </span>
                 </div>
@@ -409,7 +456,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                     <div className="relative">
                       {input.prefix && (
                         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 font-medium text-sm">
-                          {input.prefix}
+                          {input.prefix === '$' ? (currencySymbols[prefs.currency] || '$') : input.prefix}
                         </span>
                       )}
                       <input
@@ -463,9 +510,9 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
               </span>
             </div>
 
-            {/* Results Primary Metric Grid */}
+             {/* Results Primary Metric Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {result.summary.map((sum, index) => (
+              {formattedSummary.map((sum, index) => (
                 <div key={index} className={`p-4 rounded-2xl border border-slate-50 dark:border-slate-800/60 ${index === 0 ? 'bg-blue-50/20 dark:bg-blue-950/20' : 'bg-slate-50/25 dark:bg-slate-900/30'}`}>
                   <span className="text-xs text-slate-400 dark:text-slate-500 font-medium block mb-1">{sum.label}</span>
                   <span className={`font-display text-xl font-bold font-mono tracking-tight ${sum.valueColor || 'text-slate-900 dark:text-white'}`}>
@@ -487,7 +534,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                 Result Interpretation
               </h4>
               <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                {result.interpretation}
+                {formattedInterpretation}
               </p>
             </div>
           </div>
@@ -540,12 +587,12 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
               {calculator.formula.example.steps.map((step, idx) => (
                 <div key={idx} className="flex gap-2">
                   <span className="text-blue-600 dark:text-blue-400 font-bold">{idx + 1}.</span>
-                  <span>{step}</span>
+                  <span>{formatTextPreferences(step)}</span>
                 </div>
               ))}
               <div className="border-t border-slate-200 dark:border-slate-800 mt-2 pt-2 text-slate-900 dark:text-white font-bold flex gap-2">
                 <span className="text-emerald-600 dark:text-emerald-400 font-bold">Outcome:</span>
-                <span>{calculator.formula.example.result}</span>
+                <span>{formatTextPreferences(calculator.formula.example.result)}</span>
               </div>
             </div>
           </div>

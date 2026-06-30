@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Lucide from 'lucide-react';
-import { formatPrefMoney } from '../lib/preferences';
+import { formatPrefMoney, getPreferences, currencySymbols } from '../lib/preferences';
 import SEO from './SEO';
 
 export default function ComparisonView() {
+  const [prefs, setPrefs] = useState(() => getPreferences());
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setPrefs(getPreferences());
+    };
+    window.addEventListener('preferences_updated', handleUpdate);
+    return () => {
+      window.removeEventListener('preferences_updated', handleUpdate);
+    };
+  }, []);
+
   const [compType, setCompType] = useState<'mortgage' | 'investing' | 'retirement'>('mortgage');
 
   // 1. Mortgage Compare state
@@ -365,7 +377,7 @@ export default function ComparisonView() {
           {compType === 'mortgage' && (
             <div className="space-y-3 text-xs">
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Home Price ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Home Price ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={mortA.principal}
@@ -398,7 +410,7 @@ export default function ComparisonView() {
           {compType === 'investing' && (
             <div className="space-y-3 text-xs">
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Starting Balance ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Starting Balance ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={invA.initial}
@@ -407,7 +419,7 @@ export default function ComparisonView() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Monthly Deposit ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Monthly Deposit ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={invA.monthly}
@@ -458,7 +470,7 @@ export default function ComparisonView() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Current Savings ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Current Savings ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={retA.savings}
@@ -467,7 +479,7 @@ export default function ComparisonView() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Monthly Contribution ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Monthly Contribution ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={retA.monthly}
@@ -489,7 +501,7 @@ export default function ComparisonView() {
           {compType === 'mortgage' && (
             <div className="space-y-3 text-xs">
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Home Price ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Home Price ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={mortB.principal}
@@ -522,7 +534,7 @@ export default function ComparisonView() {
           {compType === 'investing' && (
             <div className="space-y-3 text-xs">
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Starting Balance ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Starting Balance ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={invB.initial}
@@ -531,7 +543,7 @@ export default function ComparisonView() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Monthly Deposit ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Monthly Deposit ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={invB.monthly}
@@ -582,7 +594,7 @@ export default function ComparisonView() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Current Savings ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Current Savings ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={retB.savings}
@@ -591,7 +603,7 @@ export default function ComparisonView() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="font-bold text-slate-500 dark:text-slate-400">Monthly Contribution ($)</label>
+                <label className="font-bold text-slate-500 dark:text-slate-400">Monthly Contribution ({currencySymbols[prefs.currency] || '$'})</label>
                 <input
                   type="number"
                   value={retB.monthly}
