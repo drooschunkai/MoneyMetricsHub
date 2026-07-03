@@ -53,6 +53,8 @@ export default function CategoryView({ categorySlug, onNavigate }: CategoryViewP
       <nav className="flex text-xs text-slate-500 gap-1.5 items-center">
         <button onClick={() => onNavigate('')} className="hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors">Home</button>
         <Lucide.ChevronRight className="w-3.5 h-3.5" />
+        <button onClick={() => onNavigate('categories')} className="hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors">Categories</button>
+        <Lucide.ChevronRight className="w-3.5 h-3.5" />
         <span className="text-slate-800 dark:text-slate-200 font-medium">{category.name}</span>
       </nav>
 

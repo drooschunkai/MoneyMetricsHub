@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import HomeView from './components/HomeView';
 import CategoryView from './components/CategoryView';
+import CategoriesView from './components/CategoriesView';
 import CalculatorView from './components/CalculatorView';
 import GuideView from './components/GuideView';
 import SearchView from './components/SearchView';
@@ -28,6 +29,11 @@ function parseLocation(): RouteState {
   // 1. Home path
   if (path === '/' || path === '') {
     return { name: 'home', params: {} };
+  }
+
+  // Categories overview: /categories
+  if (path === '/categories' || path === '/categories/') {
+    return { name: 'categories', params: {} };
   }
 
   // 2. Categories path: /categories/:slug
@@ -124,6 +130,9 @@ export default function App() {
       
       case 'category':
         return <CategoryView categorySlug={route.params.slug} onNavigate={handleNavigate} />;
+      
+      case 'categories':
+        return <CategoriesView onNavigate={handleNavigate} />;
       
       case 'calculator':
         return <CalculatorView calculatorSlug={route.params.slug} onNavigate={handleNavigate} />;

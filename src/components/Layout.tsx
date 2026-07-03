@@ -79,20 +79,36 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
               
               {/* Category selector pill dropdown */}
               <div className="relative group">
-                <button className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1 cursor-pointer transition-colors">
+                <button 
+                  onClick={() => onNavigate('categories')}
+                  className={`text-sm font-medium flex items-center gap-1 cursor-pointer transition-colors ${
+                    activeRoute === 'categories' || activeRoute === 'category'
+                      ? 'text-blue-600 dark:text-blue-400 font-bold'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'
+                  }`}
+                >
                   Categories
-                  <Lucide.ChevronDown className="w-4 h-4 text-slate-400" />
+                  <Lucide.ChevronDown className="w-4 h-4 text-slate-455" />
                 </button>
-                <div className="absolute top-full left-0 mt-1.5 w-60 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-xl rounded-2xl p-2 hidden group-hover:block animate-fade-in z-50 transition-colors duration-200">
-                  {categories.map((cat) => (
+                <div className="absolute top-full left-0 pt-1.5 w-60 hidden group-hover:block z-50 animate-fade-in">
+                  <div className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-xl rounded-2xl p-2 transition-colors duration-200">
                     <button
-                      key={cat.id}
-                      onClick={() => onNavigate(`categories/${cat.slug}`)}
-                      className="w-full text-left px-3.5 py-2 hover:bg-blue-50/50 dark:hover:bg-slate-700/50 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 cursor-pointer transition-colors"
+                      onClick={() => onNavigate('categories')}
+                      className="w-full text-left px-3.5 py-2 hover:bg-blue-50/70 dark:hover:bg-slate-750 rounded-xl text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center justify-between cursor-pointer transition-colors border-b border-slate-100 dark:border-slate-750 mb-1"
                     >
-                      <span>{cat.name}</span>
+                      <span>View All Categories</span>
+                      <Lucide.ArrowRight className="w-3.5 h-3.5" />
                     </button>
-                  ))}
+                    {categories.map((cat) => (
+                      <button
+                        key={cat.id}
+                        onClick={() => onNavigate(`categories/${cat.slug}`)}
+                        className="w-full text-left px-3.5 py-2 hover:bg-blue-50/50 dark:hover:bg-slate-700/50 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 cursor-pointer transition-colors"
+                      >
+                        <span>{cat.name}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -112,7 +128,7 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
                 onClick={() => onNavigate('about')} 
                 className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors ${activeRoute === 'about' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-300'}`}
               >
-                Methodology
+                About
               </button>
             </nav>
 
@@ -194,8 +210,17 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
               </button>
               
               <div className="border-t border-slate-100 dark:border-slate-800 pt-2">
-                <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block px-2 mb-2">Categories</span>
-                <div className="grid grid-cols-2 gap-1 px-2">
+                <button
+                  onClick={() => {
+                    onNavigate('categories');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left font-bold text-slate-800 dark:text-slate-100 py-1.5 px-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors flex justify-between items-center"
+                >
+                  <span>Categories Overview</span>
+                  <Lucide.ArrowRight className="w-4 h-4 text-slate-400" />
+                </button>
+                <div className="grid grid-cols-2 gap-1 px-4 mt-1.5">
                   {categories.map((cat) => (
                     <button
                       key={cat.id}
@@ -203,7 +228,7 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
                         onNavigate(`categories/${cat.slug}`);
                         setMobileMenuOpen(false);
                       }}
-                      className="text-left text-xs text-slate-600 dark:text-slate-300 font-semibold py-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                      className="text-left text-xs text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1 font-medium"
                     >
                       {cat.name}
                     </button>
@@ -246,7 +271,7 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
                   }}
                   className="text-left font-semibold text-slate-700 dark:text-slate-200 text-sm py-1 px-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors"
                 >
-                  Methodology
+                  About
                 </button>
               </div>
             </nav>

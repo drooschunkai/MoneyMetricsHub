@@ -330,6 +330,8 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
       <nav className="flex text-xs text-slate-500 gap-1.5 items-center">
         <button onClick={() => onNavigate('')} className="hover:text-blue-600 cursor-pointer">Home</button>
         <Lucide.ChevronRight className="w-3.5 h-3.5" />
+        <button onClick={() => onNavigate('categories')} className="hover:text-blue-600 cursor-pointer">Categories</button>
+        <Lucide.ChevronRight className="w-3.5 h-3.5" />
         {category && (
           <>
             <button onClick={() => onNavigate(`categories/${category.slug}`)} className="hover:text-blue-600 cursor-pointer">

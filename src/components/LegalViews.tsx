@@ -198,12 +198,42 @@ export function PrivacyView() {
         At MoneyMetricsHub, your personal financial data privacy is paramount. Unlike standard apps that upload portfolio metrics or loan details to secondary databases, all calculator engines on our platform execute entirely in your web browser. No personal income, loan, or investment figures are ever saved on our servers.
       </p>
 
-      <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-2">2. Cookies & Advertising</h3>
+      <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-2">2. Cookies, Advertising, and AdSense Disclosure</h3>
       <p>
-        We utilize standard essential session tracking cookies to analyze site traffic patterns and optimize platform speed. We partner with Google AdSense to serve programmatic financial advertisements. Google utilizes cookies (such as the DART cookie) to serve ads based on your visits to this and other websites.
+        We utilize standard essential session cookies to analyze traffic patterns, speed up load times, and save user preferences (like your local currency or favorite calculators).
       </p>
+      <p className="mt-2">
+        We also partner with third-party vendors, including <strong>Google AdSense</strong>, to serve programmatic financial advertisements when you visit our website. These advertising partners use cookies to serve ads based on a user's prior visits to our website or other websites on the Internet:
+      </p>
+      <ul className="list-disc pl-5 mt-2 space-y-1.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+        <li>
+          <strong>Google DART Cookie:</strong> Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visits to MoneyMetricsHub and/or other sites on the Internet.
+        </li>
+        <li>
+          <strong>Personalized Ads Opt-Out:</strong> Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800">Google Ad Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting the <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800">AboutAds Choices Page</a> or <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800">NAI Consumer Opt-Out Page</a>.
+        </li>
+        <li>
+          <strong>Browser Cookie Settings:</strong> You can choose to disable or selectively turn off our cookies or third-party cookies in your browser settings. However, this can affect how you are able to interact with our site as well as other websites.
+        </li>
+      </ul>
 
-      <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-2">3. Third-Party Links</h3>
+      <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-4">3. GDPR and CCPA Data Rights Compliance</h3>
+      <p>
+        MoneyMetricsHub is fully committed to consumer data rights under regional laws such as the General Data Protection Regulation (GDPR) for European citizens and the California Consumer Privacy Act (CCPA) for California residents:
+      </p>
+      <ul className="list-disc pl-5 mt-2 space-y-1.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+        <li>
+          <strong>Zero Backend Storage:</strong> Since all calculator engines run entirely client-side (in-browser), we do not collect, process, compile, or store your private financial values, mortgage balances, or salaries.
+        </li>
+        <li>
+          <strong>Right to Erasure:</strong> Your history log and calculator favorites are stored strictly inside your local browser via <code>localStorage</code>. You can completely erase this data at any time by clearing your browser cache or clicking "Clear History" in the My Hub dashboard.
+        </li>
+        <li>
+          <strong>No Selling of Personal Data:</strong> We do not sell or rent user information to any third parties. Any non-essential tracking is subject to third-party ad network cookie opt-outs listed above.
+        </li>
+      </ul>
+
+      <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-4">4. Third-Party Links</h3>
       <p>
         Our calculators provide outward reference hyperlinks to official regulatory bodies (such as IRS.gov, SEC.gov, FDIC.gov) or educational resources (such as Investopedia). We do not bear responsibility for the privacy practices of external platforms.
       </p>
