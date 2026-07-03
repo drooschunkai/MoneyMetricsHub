@@ -93,7 +93,7 @@ export function ContactView() {
             <div className="space-y-3 text-sm">
               <div className="flex items-center gap-2.5">
                 <Lucide.Mail className="w-4.5 h-4.5 text-blue-500 dark:text-blue-400" />
-                <span className="text-slate-600 dark:text-slate-300">support@moneymetricshub.com</span>
+                <span className="text-slate-600 dark:text-slate-300">support@moneymetrichubs.com</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Lucide.MapPin className="w-4.5 h-4.5 text-blue-500 dark:text-blue-400" />

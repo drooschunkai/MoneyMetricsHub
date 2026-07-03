@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moneymetrichubs.com/sitemap.xml
+Sitemap: https://moneymetrichubs.com/sitemap-news.xml

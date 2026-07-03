@@ -2,67 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Brand Pages -->
   <url>
-    <loc>https://moneymetricshub.com/</loc>
+    <loc>https://moneymetrichubs.com/</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/compare</loc>
+    <loc>https://moneymetrichubs.com/compare</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/preferences</loc>
+    <loc>https://moneymetrichubs.com/preferences</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/newsletter</loc>
+    <loc>https://moneymetrichubs.com/newsletter</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/sitemap</loc>
+    <loc>https://moneymetrichubs.com/sitemap</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/dashboard</loc>
+    <loc>https://moneymetrichubs.com/dashboard</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/about</loc>
+    <loc>https://moneymetrichubs.com/about</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/contact</loc>
+    <loc>https://moneymetrichubs.com/contact</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/privacy</loc>
+    <loc>https://moneymetrichubs.com/privacy</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/terms</loc>
+    <loc>https://moneymetrichubs.com/terms</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/disclaimer</loc>
+    <loc>https://moneymetrichubs.com/disclaimer</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
@@ -70,49 +70,49 @@
 
   <!-- Category Hubs -->
   <url>
-    <loc>https://moneymetricshub.com/categories/investing</loc>
+    <loc>https://moneymetrichubs.com/categories/investing</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/categories/loans</loc>
+    <loc>https://moneymetrichubs.com/categories/loans</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/categories/retirement</loc>
+    <loc>https://moneymetrichubs.com/categories/retirement</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/categories/savings</loc>
+    <loc>https://moneymetrichubs.com/categories/savings</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/categories/income</loc>
+    <loc>https://moneymetrichubs.com/categories/income</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/categories/debt</loc>
+    <loc>https://moneymetrichubs.com/categories/debt</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/categories/taxes</loc>
+    <loc>https://moneymetrichubs.com/categories/taxes</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/categories/business</loc>
+    <loc>https://moneymetrichubs.com/categories/business</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -120,379 +120,379 @@
 
   <!-- Financial Calculators -->
   <url>
-    <loc>https://moneymetricshub.com/calculators/coast-fire</loc>
+    <loc>https://moneymetrichubs.com/calculators/coast-fire</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/barista-fire</loc>
+    <loc>https://moneymetrichubs.com/calculators/barista-fire</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/lean-fire</loc>
+    <loc>https://moneymetrichubs.com/calculators/lean-fire</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/fat-fire</loc>
+    <loc>https://moneymetrichubs.com/calculators/fat-fire</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/retirement-withdrawal</loc>
+    <loc>https://moneymetrichubs.com/calculators/retirement-withdrawal</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/safe-withdrawal-rate</loc>
+    <loc>https://moneymetrichubs.com/calculators/safe-withdrawal-rate</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/social-security-estimator</loc>
+    <loc>https://moneymetrichubs.com/calculators/social-security-estimator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/dividend-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/dividend-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/dividend-yield</loc>
+    <loc>https://moneymetrichubs.com/calculators/dividend-yield</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/dividend-reinvestment</loc>
+    <loc>https://moneymetrichubs.com/calculators/dividend-reinvestment</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/dollar-cost-averaging</loc>
+    <loc>https://moneymetrichubs.com/calculators/dollar-cost-averaging</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/portfolio-return</loc>
+    <loc>https://moneymetrichubs.com/calculators/portfolio-return</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/asset-allocation</loc>
+    <loc>https://moneymetrichubs.com/calculators/asset-allocation</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/rule-of-72</loc>
+    <loc>https://moneymetrichubs.com/calculators/rule-of-72</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/risk-tolerance</loc>
+    <loc>https://moneymetrichubs.com/calculators/risk-tolerance</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/investment-fee-impact</loc>
+    <loc>https://moneymetrichubs.com/calculators/investment-fee-impact</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/expense-ratio</loc>
+    <loc>https://moneymetrichubs.com/calculators/expense-ratio</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/debt-payoff</loc>
+    <loc>https://moneymetrichubs.com/calculators/debt-payoff</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/debt-snowball</loc>
+    <loc>https://moneymetrichubs.com/calculators/debt-snowball</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/debt-avalanche</loc>
+    <loc>https://moneymetrichubs.com/calculators/debt-avalanche</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/credit-utilization</loc>
+    <loc>https://moneymetrichubs.com/calculators/credit-utilization</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/credit-card-interest</loc>
+    <loc>https://moneymetrichubs.com/calculators/credit-card-interest</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/balance-transfer</loc>
+    <loc>https://moneymetrichubs.com/calculators/balance-transfer</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/income-tax-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/income-tax-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/capital-gains-tax</loc>
+    <loc>https://moneymetrichubs.com/calculators/capital-gains-tax</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/sales-tax-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/sales-tax-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/vat-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/vat-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/self-employment-tax</loc>
+    <loc>https://moneymetrichubs.com/calculators/self-employment-tax</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/effective-tax-rate</loc>
+    <loc>https://moneymetrichubs.com/calculators/effective-tax-rate</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/profit-margin</loc>
+    <loc>https://moneymetrichubs.com/calculators/profit-margin</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/gross-margin</loc>
+    <loc>https://moneymetrichubs.com/calculators/gross-margin</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/roi-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/roi-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/break-even</loc>
+    <loc>https://moneymetrichubs.com/calculators/break-even</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/markup-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/markup-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/business-loan</loc>
+    <loc>https://moneymetrichubs.com/calculators/business-loan</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/mortgage-refinance</loc>
+    <loc>https://moneymetrichubs.com/calculators/mortgage-refinance</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/down-payment</loc>
+    <loc>https://moneymetrichubs.com/calculators/down-payment</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/affordability-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/affordability-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/rent-vs-buy</loc>
+    <loc>https://moneymetrichubs.com/calculators/rent-vs-buy</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/mortgage-amortization</loc>
+    <loc>https://moneymetrichubs.com/calculators/mortgage-amortization</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/extra-payment-mortgage</loc>
+    <loc>https://moneymetrichubs.com/calculators/extra-payment-mortgage</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/biweekly-mortgage</loc>
+    <loc>https://moneymetrichubs.com/calculators/biweekly-mortgage</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/heloc-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/heloc-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/compound-interest</loc>
+    <loc>https://moneymetrichubs.com/calculators/compound-interest</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/investment-return</loc>
+    <loc>https://moneymetrichubs.com/calculators/investment-return</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/sip-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/sip-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/cagr-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/cagr-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/future-value</loc>
+    <loc>https://moneymetrichubs.com/calculators/future-value</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/mortgage-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/mortgage-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/loan-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/loan-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/emi-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/emi-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/auto-loan</loc>
+    <loc>https://moneymetrichubs.com/calculators/auto-loan</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/personal-loan</loc>
+    <loc>https://moneymetrichubs.com/calculators/personal-loan</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/retirement-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/retirement-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/fire-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/fire-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/four-percent-rule</loc>
+    <loc>https://moneymetrichubs.com/calculators/four-percent-rule</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/retirement-savings</loc>
+    <loc>https://moneymetrichubs.com/calculators/retirement-savings</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/savings-goal</loc>
+    <loc>https://moneymetrichubs.com/calculators/savings-goal</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/emergency-fund</loc>
+    <loc>https://moneymetrichubs.com/calculators/emergency-fund</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/inflation-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/inflation-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/salary-calculator</loc>
+    <loc>https://moneymetrichubs.com/calculators/salary-calculator</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/hourly-wage</loc>
+    <loc>https://moneymetrichubs.com/calculators/hourly-wage</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/calculators/net-worth</loc>
+    <loc>https://moneymetrichubs.com/calculators/net-worth</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -500,55 +500,55 @@
 
   <!-- Educational Guides -->
   <url>
-    <loc>https://moneymetricshub.com/guides/what-is-compound-interest</loc>
+    <loc>https://moneymetrichubs.com/guides/what-is-compound-interest</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/guides/what-is-fire</loc>
+    <loc>https://moneymetrichubs.com/guides/what-is-fire</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/guides/mortgage-amortization-explained</loc>
+    <loc>https://moneymetrichubs.com/guides/mortgage-amortization-explained</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/guides/inflation-explained</loc>
+    <loc>https://moneymetrichubs.com/guides/inflation-explained</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/guides/how-much-to-save-for-retirement</loc>
+    <loc>https://moneymetrichubs.com/guides/how-much-to-save-for-retirement</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/guides/debt-snowball-vs-debt-avalanche</loc>
+    <loc>https://moneymetrichubs.com/guides/debt-snowball-vs-debt-avalanche</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/guides/how-to-optimize-credit-score</loc>
+    <loc>https://moneymetrichubs.com/guides/how-to-optimize-credit-score</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/guides/understanding-capital-gains-tax</loc>
+    <loc>https://moneymetrichubs.com/guides/understanding-capital-gains-tax</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/guides/business-profitability-metrics</loc>
+    <loc>https://moneymetrichubs.com/guides/business-profitability-metrics</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -556,139 +556,139 @@
 
   <!-- Programmatic SEO Pages -->
   <url>
-    <loc>https://moneymetricshub.com/mortgage/200000-loan</loc>
+    <loc>https://moneymetrichubs.com/mortgage/200000-loan</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/mortgage/300000-loan</loc>
+    <loc>https://moneymetrichubs.com/mortgage/300000-loan</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/mortgage/500000-loan</loc>
+    <loc>https://moneymetrichubs.com/mortgage/500000-loan</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/mortgage/5-percent-interest</loc>
+    <loc>https://moneymetrichubs.com/mortgage/5-percent-interest</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/mortgage/6-percent-interest</loc>
+    <loc>https://moneymetrichubs.com/mortgage/6-percent-interest</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/mortgage/30-year-fixed</loc>
+    <loc>https://moneymetrichubs.com/mortgage/30-year-fixed</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/mortgage/15-year-fixed</loc>
+    <loc>https://moneymetrichubs.com/mortgage/15-year-fixed</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/compound-interest/100-per-month</loc>
+    <loc>https://moneymetrichubs.com/compound-interest/100-per-month</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/compound-interest/500-per-month</loc>
+    <loc>https://moneymetrichubs.com/compound-interest/500-per-month</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/compound-interest/1000-per-month</loc>
+    <loc>https://moneymetrichubs.com/compound-interest/1000-per-month</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/compound-interest/starting-at-age-20</loc>
+    <loc>https://moneymetrichubs.com/compound-interest/starting-at-age-20</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/compound-interest/starting-at-age-30</loc>
+    <loc>https://moneymetrichubs.com/compound-interest/starting-at-age-30</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/compound-interest/starting-at-age-40</loc>
+    <loc>https://moneymetrichubs.com/compound-interest/starting-at-age-40</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/retirement/age-25</loc>
+    <loc>https://moneymetrichubs.com/retirement/age-25</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/retirement/age-35</loc>
+    <loc>https://moneymetrichubs.com/retirement/age-35</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/retirement/age-45</loc>
+    <loc>https://moneymetrichubs.com/retirement/age-45</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/retirement/age-55</loc>
+    <loc>https://moneymetrichubs.com/retirement/age-55</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/fire/1000000-target</loc>
+    <loc>https://moneymetrichubs.com/fire/1000000-target</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/fire/2000000-target</loc>
+    <loc>https://moneymetrichubs.com/fire/2000000-target</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/fire/3000000-target</loc>
+    <loc>https://moneymetrichubs.com/fire/3000000-target</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/salary/50000-income</loc>
+    <loc>https://moneymetrichubs.com/salary/50000-income</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/salary/100000-income</loc>
+    <loc>https://moneymetrichubs.com/salary/100000-income</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://moneymetricshub.com/salary/150000-income</loc>
+    <loc>https://moneymetrichubs.com/salary/150000-income</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
