@@ -66,7 +66,7 @@ export default function SEO({
     // Google Analytics & Google AdSense Dynamic Loading (Loaded EXCLUSIVELY on primary domain to avoid data pollution and policy errors)
     if (isPrimaryDomain) {
       // 1. Google Analytics Setup
-      const gaId = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || '';
+      const gaId = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || 'G-0LYL7WF7CS';
       if (gaId && !document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${gaId}"]`)) {
         const gaScript = document.createElement('script');
         gaScript.async = true;
