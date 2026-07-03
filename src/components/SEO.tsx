@@ -84,7 +84,7 @@ export default function SEO({
       }
 
       // 2. Google AdSense Setup
-      const adsenseId = (import.meta as any).env.VITE_ADSENSE_CLIENT_ID || '';
+      const adsenseId = (import.meta as any).env.VITE_ADSENSE_CLIENT_ID || 'ca-pub-5337553670771572';
       if (adsenseId && !document.querySelector(`script[src*="pagead2.googlesyndication.com"]`)) {
         const adsenseScript = document.createElement('script');
         adsenseScript.async = true;
