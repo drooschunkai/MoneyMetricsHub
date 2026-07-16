@@ -11,20 +11,20 @@ export function AboutView({ onNavigate }: LegalProps) {
   return (
     <div className="animate-fade-in max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 text-slate-600 dark:text-slate-300 transition-colors duration-200">
       <SEO
-        title="About Us | MoneyMetricsHub"
-        description="Learn about the mathematical methodology, academic principles, and financial guidelines driving MoneyMetricsHub."
+        title="About Us | Money Metric Hubs"
+        description="Learn about the mathematical methodology, academic principles, and financial guidelines driving Money Metric Hubs."
         schemaType="basic"
         slug="about"
       />
       
       <div className="space-y-3 pb-4 border-b border-slate-100 dark:border-slate-800">
-        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">About MoneyMetricsHub</h1>
+        <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">About Money Metric Hubs</h1>
         <p className="text-slate-500 dark:text-slate-400 text-base">Mathematical accuracy combined with beautiful design.</p>
       </div>
 
       <div className="space-y-6 text-sm sm:text-base leading-relaxed">
         <p>
-          Welcome to <strong>MoneyMetricsHub</strong>. We are a premium financial technology platform designed to deliver clear, fast, and completely free calculations. We build our models to serve investors, home buyers, retirement planners, and savers.
+          Welcome to <strong>Money Metric Hubs</strong>. We are a premium financial technology platform designed to deliver clear, fast, and completely free calculations. We build our models to serve investors, home buyers, retirement planners, and savers.
         </p>
 
         <h3 className="font-display text-xl font-bold text-slate-950 dark:text-white pt-4">Our Mission</h3>
@@ -74,8 +74,8 @@ export function ContactView() {
   return (
     <div className="animate-fade-in max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 text-slate-600 dark:text-slate-300 transition-colors duration-200">
       <SEO
-        title="Contact Us | MoneyMetricsHub"
-        description="Have questions about our financial calculators? Reach out to the MoneyMetricsHub editorial or engineering team."
+        title="Contact Us | Money Metric Hubs"
+        description="Have questions about our financial calculators? Reach out to the Money Metric Hubs editorial or engineering team."
         schemaType="basic"
         slug="contact"
       />
@@ -122,7 +122,7 @@ export function ContactView() {
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">Message Received!</h3>
               <p className="text-slate-500 dark:text-slate-400 text-sm max-w-sm mx-auto leading-relaxed">
-                Thank you for reaching out to MoneyMetricsHub. A member of our financial engineering team will reply shortly.
+                Thank you for reaching out to Money Metric Hubs. A member of our financial engineering team will reply shortly.
               </p>
             </div>
           ) : (
@@ -182,7 +182,7 @@ export function PrivacyView() {
   return (
     <div className="animate-fade-in max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed transition-colors duration-200">
       <SEO
-        title="Privacy Policy | MoneyMetricsHub"
+        title="Privacy Policy | Money Metric Hubs"
         description="Learn how we protect your personal financial privacy. We perform calculations entirely in-browser and do not store inputted balances."
         schemaType="basic"
         slug="privacy"
@@ -195,7 +195,7 @@ export function PrivacyView() {
 
       <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-2">1. Browser-Only Calculations</h3>
       <p>
-        At MoneyMetricsHub, your personal financial data privacy is paramount. Unlike standard apps that upload portfolio metrics or loan details to secondary databases, all calculator engines on our platform execute entirely in your web browser. No personal income, loan, or investment figures are ever saved on our servers.
+        At Money Metric Hubs, your personal financial data privacy is paramount. Unlike standard apps that upload portfolio metrics or loan details to secondary databases, all calculator engines on our platform execute entirely in your web browser. No personal income, loan, or investment figures are ever saved on our servers.
       </p>
 
       <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-2">2. Cookies, Advertising, and AdSense Disclosure</h3>
@@ -207,7 +207,7 @@ export function PrivacyView() {
       </p>
       <ul className="list-disc pl-5 mt-2 space-y-1.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
         <li>
-          <strong>Google DART Cookie:</strong> Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visits to MoneyMetricsHub and/or other sites on the Internet.
+          <strong>Google DART Cookie:</strong> Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visits to Money Metric Hubs and/or other sites on the Internet.
         </li>
         <li>
           <strong>Personalized Ads Opt-Out:</strong> Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800">Google Ad Settings</a>. Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting the <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800">AboutAds Choices Page</a> or <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800">NAI Consumer Opt-Out Page</a>.
@@ -219,7 +219,7 @@ export function PrivacyView() {
 
       <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-4">3. GDPR and CCPA Data Rights Compliance</h3>
       <p>
-        MoneyMetricsHub is fully committed to consumer data rights under regional laws such as the General Data Protection Regulation (GDPR) for European citizens and the California Consumer Privacy Act (CCPA) for California residents:
+        Money Metric Hubs is fully committed to consumer data rights under regional laws such as the General Data Protection Regulation (GDPR) for European citizens and the California Consumer Privacy Act (CCPA) for California residents:
       </p>
       <ul className="list-disc pl-5 mt-2 space-y-1.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
         <li>
@@ -246,8 +246,8 @@ export function TermsView() {
   return (
     <div className="animate-fade-in max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed transition-colors duration-200">
       <SEO
-        title="Terms of Service | MoneyMetricsHub"
-        description="Standard terms of service and conditions for using the MoneyMetricsHub website and calculators."
+        title="Terms of Service | Money Metric Hubs"
+        description="Standard terms of service and conditions for using the Money Metric Hubs website and calculators."
         schemaType="basic"
         slug="terms"
       />
@@ -259,7 +259,7 @@ export function TermsView() {
 
       <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-2">1. Terms Acceptance</h3>
       <p>
-        By accessing MoneyMetricsHub, you agree to comply with and be bound by these terms. If you do not accept these policies, you must immediately cease usage of the calculators and site resources.
+        By accessing Money Metric Hubs, you agree to comply with and be bound by these terms. If you do not accept these policies, you must immediately cease usage of the calculators and site resources.
       </p>
 
       <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-2">2. Educational Purposes Only</h3>
@@ -280,7 +280,7 @@ export function DisclaimerView() {
   return (
     <div className="animate-fade-in max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed transition-colors duration-200">
       <SEO
-        title="Financial Disclaimer | MoneyMetricsHub"
+        title="Financial Disclaimer | Money Metric Hubs"
         description="The financial calculation disclaimer. All tools are informational. Consult a certified financial planner for personal decision-making."
         schemaType="basic"
         slug="disclaimer"
@@ -296,7 +296,7 @@ export function DisclaimerView() {
         <div className="space-y-2">
           <span className="font-bold uppercase block tracking-wider text-[11px] text-amber-800 dark:text-amber-400">Critical Notice</span>
           <p className="leading-relaxed">
-            The calculations provided by MoneyMetricsHub do not constitute financial advice. All formulas, values, interest compounding models, and guides are compiled for general education and estimation purposes only.
+            The calculations provided by Money Metric Hubs do not constitute financial advice. All formulas, values, interest compounding models, and guides are compiled for general education and estimation purposes only.
           </p>
         </div>
       </div>

@@ -15,6 +15,7 @@ import NewsletterView from './components/NewsletterView';
 import SitemapView from './components/SitemapView';
 import DashboardView from './components/DashboardView';
 import ComparisonView from './components/ComparisonView';
+import NotFoundView from './components/NotFoundView';
 
 interface RouteState {
   name: string;
@@ -97,8 +98,8 @@ function parseLocation(): RouteState {
   if (path === '/terms') return { name: 'terms', params: {} };
   if (path === '/disclaimer') return { name: 'disclaimer', params: {} };
 
-  // Fallback to home
-  return { name: 'home', params: {} };
+  // Fallback to 404
+  return { name: '404', params: {} };
 }
 
 export default function App() {
@@ -178,8 +179,11 @@ export default function App() {
       case 'disclaimer':
         return <DisclaimerView />;
 
+      case '404':
+        return <NotFoundView onNavigate={handleNavigate} />;
+
       default:
-        return <HomeView onNavigate={handleNavigate} />;
+        return <NotFoundView onNavigate={handleNavigate} />;
     }
   };
 

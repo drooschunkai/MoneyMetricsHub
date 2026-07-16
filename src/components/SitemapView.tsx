@@ -23,7 +23,7 @@ export default function SitemapView({ onNavigate }: SitemapViewProps) {
   return (
     <div className="animate-fade-in max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10" id="html-sitemap-page">
       <SEO
-        title="HTML Sitemap | MoneyMetricsHub Index"
+        title="HTML Sitemap | Money Metric Hubs Index"
         description="Comprehensive index of all calculator models, dynamic SEO pages, wealth guides, and regional dashboards."
         slug="sitemap"
       />
@@ -32,7 +32,7 @@ export default function SitemapView({ onNavigate }: SitemapViewProps) {
       <div className="border-b border-slate-150 dark:border-slate-800 pb-5">
         <h1 className="text-2xl sm:text-3xl font-display font-black tracking-tight text-slate-950 dark:text-white flex items-center gap-2.5">
           <Lucide.Map className="w-8 h-8 text-blue-600" />
-          <span>MoneyMetricsHub HTML Sitemap</span>
+          <span>Money Metric Hubs HTML Sitemap</span>
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
           Comprehensive structured directory of all mathematical planning calculators, long-tail programmatic insights, and financial guides.

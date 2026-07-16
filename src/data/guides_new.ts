@@ -185,5 +185,389 @@ Using the same example, your wholesale cost is $60 and you sell it for $100. You
         answer: 'Generally, a 10% net profit margin is considered average, 20% is high (excellent), and 5% is low.'
       }
     ]
+  },
+  {
+    slug: 'asset-allocation-resilient-portfolio',
+    title: 'Asset Allocation: How to Build a Resilient Investment Portfolio',
+    metaDescription: 'Learn the fundamentals of asset allocation. Discover how to balance risk and reward across stocks, bonds, and alternatives using age-based guidelines.',
+    readTime: '7 min read',
+    category: 'investing',
+    summary: 'Successful investing depends more on asset allocation than individual stock picking. Understand the math and methodologies behind portfolio diversification.',
+    content: `
+## Introduction to Asset Allocation
+
+When it comes to building wealth over the long haul, many investors obsess over finding the next "hot" stock or timing the absolute bottom of the market. However, decades of rigorous financial research—including the seminal 1986 Brinson study—reveal that more than **90% of a portfolio's return variability is driven by asset allocation**, rather than individual stock selection or market timing.
+
+Asset allocation is the strategic distribution of your investment capital across broad asset classes: equities (stocks), fixed income (bonds), cash, and alternative assets (like real estate or gold). By diversifying your investments among uncorrelated asset classes, you optimize the trade-off between risk and potential return.
+
+## The Primary Asset Classes
+
+To build a resilient portfolio, you must understand the roles and characteristics of each primary asset class:
+
+1. **Equities (Stocks):** Represent ownership shares in companies. They offer the highest historical long-term returns (averaging 7% to 10% annually adjusted for inflation) but come with significant short-term volatility. Stocks are the growth engine of your portfolio.
+2. **Fixed Income (Bonds):** Represent loans made to governments or corporations. Bonds pay regular interest (coupons) and return the principal at maturity. They provide stable income and act as a volatility cushion when stock markets tumble.
+3. **Cash & Cash Equivalents:** Includes High-Yield Savings Accounts (HYSAs), certificates of deposit (CDs), and money market funds. Cash preserves capital and provides immediate liquidity, but is highly susceptible to purchasing power erosion due to inflation.
+4. **Alternatives:** Includes Real Estate Investment Trusts (REITs), commodities, and gold. These assets tend to perform differently than standard stocks and bonds, providing additional insulation against stock market crashes.
+
+## Determining Your Asset Allocation Strategy
+
+Your target asset allocation depends entirely on your **investment horizon** (how long until you need the funds) and your **risk tolerance** (how much market volatility you can emotionally and financially withstand).
+
+### 1. Age-Based Rules of Thumb
+A classic starting point is the **Rule of 110** (or 120 for younger investors with longer horizons). Subtract your current age from 110 to find the percentage of stocks you should hold, with the remainder allocated to bonds.
+
+* **Example for a 30-year-old:**
+  * Stocks: $110 - 30 = 80\%$
+  * Bonds: $20\%$
+* **Example for a 60-year-old:**
+  * Stocks: $110 - 60 = 50\%$
+  * Bonds: $50\%$
+
+### 2. Standard Model Portfolios
+Depending on your risk profile, you might select one of these classic configurations:
+* **Aggressive (90/10 or 80/20):** Tailored for young investors seeking maximum long-term growth who can ignore short-term bear markets.
+* **Balanced (60/40):** The traditional "gold standard" of portfolio management, aiming for solid equity returns while using a 40% bond cushion to limit major portfolio drops.
+* **Conservative (30/70 or 20/80):** Tailored for retirees who prioritize capital preservation and reliable monthly income over aggressive growth.
+
+## The Importance of Portfolio Rebalancing
+
+Over time, different assets grow at different rates, causing your portfolio's actual allocation to drift from your original target. For instance, during a major stock bull market, an original 80/20 portfolio might drift to 90/10.
+
+This means you are now taking on more risk than intended. To correct this, you must **rebalance**—either annually or when an asset class drifts by more than 5%. Rebalancing requires you to sell a portion of your winning assets (buying low, selling high) and reinvest the proceeds into underperforming assets, maintaining your risk parameters.
+    `,
+    faqs: [
+      {
+        question: 'Does asset allocation eliminate the risk of losing money?',
+        answer: 'No. Diversification lowers systemic risk and prevents a single bad investment from destroying your portfolio, but it cannot protect against broad, market-wide downturns.'
+      },
+      {
+        question: 'How often should I rebalance my portfolio?',
+        answer: 'Most financial advisors recommend rebalancing once or twice a year, or whenever your target allocation drifts by more than 5%.'
+      }
+    ]
+  },
+  {
+    slug: 'ultimate-guide-emergency-funds',
+    title: 'The Ultimate Guide to Emergency Funds: Your Ultimate Financial Shield',
+    metaDescription: 'Discover how much money you need in an emergency fund, where to safely store your reserves, and how to define a real financial emergency.',
+    readTime: '6 min read',
+    category: 'savings',
+    summary: 'An emergency fund is the bedrock of personal finance. Learn the step-by-step path to saving 3 to 6 months of essential living expenses.',
+    content: `
+## What is an Emergency Fund?
+
+In personal finance, an emergency fund is a dedicated cash reserve set aside exclusively for unexpected, urgent expenses. It serves as your financial "insurance policy" or protective shield. 
+
+Without an emergency fund, any unexpected event—a sudden job loss, a major medical bill, or an urgent car transmission failure—can force you to take on high-interest credit card debt, borrow against your retirement accounts, or default on payments. Having liquid cash readily available breaks this cycle of financial stress.
+
+## How Much Should You Save?
+
+The gold standard recommendation is to save **3 to 6 months of essential living expenses**. Notice the keyword: *essential*. This does not mean replacing your full current net income; it means saving enough to cover the bare-bones bills required to survive if your income completely stops.
+
+### 1. Defining "Essential" Living Expenses
+To calculate your monthly baseline, list only your non-negotiable costs:
+* **Housing:** Rent or mortgage payments, property taxes, and home insurance.
+* **Utilities:** Electricity, gas, water, internet, and basic phone plans.
+* **Food:** Basic groceries (exclude expensive dining out or food delivery).
+* **Transportation:** Car payments, fuel, insurance, or public transit passes.
+* **Debt Minimums:** Minimum required payments on credit cards, student loans, or personal loans.
+
+### 2. 3 Months vs. 6 Months: How to Choose
+* **Save 3 Months if:** You have a highly stable job (e.g., tenured government position), have multiple sources of household income, or have no dependents.
+* **Save 6 Months (or more) if:** You are a single-income household, have children or elderly dependents, work on commission or as a freelancer, or have volatile health conditions.
+
+## Where to Keep Your Emergency Fund
+
+The primary goal of an emergency fund is **liquidity and safety**, not aggressive return. You must be able to access the money instantly, day or night, and you must have absolute certainty that the principal balance will not decrease during a stock market correction.
+
+### 1. High-Yield Savings Accounts (HYSAs)
+The absolute best home for your emergency fund. HYSAs are federally insured up to $250,000 and pay interest rates that are often 10 to 20 times higher than traditional brick-and-mortar savings accounts. This helps protect your cash from inflation while maintaining total liquidity.
+
+### 2. Money Market Funds
+Offered by brokerage firms, these funds invest in short-term government debt and offer excellent stability and yield. They are highly liquid and extremely safe.
+
+### 🛑 What to Avoid
+* **The Stock Market:** Never invest your emergency reserves in stocks, crypto, or mutual funds. A market crash is often correlated with economic recessions and job layoffs, meaning you could be forced to sell your investments at a 30% loss to pay for an emergency.
+* **Physical Cash at Home:** Keeping thousands of dollars under a mattress is a high risk for theft, fire, and purchasing power erosion.
+
+## Defining a True Emergency
+
+An emergency fund is *not* a vacation fund, a holiday shopping reserve, or a down payment savings pot. To prevent spending drift, use this quick checklist before tapping your reserves:
+
+1. **Is it unexpected?** (A routine annual car registration is predictable and should be budgeted separately; a blown head gasket is unexpected).
+2. **Is it urgent?** (An aching tooth that needs a root canal is urgent; wanting cosmetic dental work can wait).
+3. **Is it necessary?** (Fixing a broken refrigerator is necessary; upgrading to a smart stainless steel model is a luxury).
+    `,
+    faqs: [
+      {
+        question: 'Should I pay off debt or build an emergency fund first?',
+        answer: 'Save a starter emergency fund of $1,000 to $2,000 first to protect yourself from immediate crises. Then, aggressively pay off high-interest debt (over 8% APR) before expanding your emergency fund to 3-6 months.'
+      },
+      {
+        question: 'Are high-yield savings accounts safe?',
+        answer: 'Yes, as long as the account is FDIC-insured (for banks) or NCUA-insured (for credit unions), your money is federally backed up to $250,000.'
+      }
+    ]
+  },
+  {
+    slug: 'guide-tax-advantaged-accounts',
+    title: 'Traditional IRA vs. Roth IRA vs. 401k: Ultimate Account Comparison',
+    metaDescription: 'Master tax-advantaged accounts. Understand how 401(k) plans, Roth IRAs, Traditional IRAs, and Health Savings Accounts (HSAs) shield your wealth.',
+    readTime: '8 min read',
+    category: 'taxes',
+    summary: 'The accounts you select to hold your investments can have a multi-million dollar impact on your retirement. Here is how to optimize your tax shield.',
+    content: `
+## The Power of Tax-Advantaged Accounts
+
+If you invest in stocks or bonds using a standard, taxable brokerage account, you are subject to drag from taxes at every step: you pay income tax on your earnings, taxes on dividends paid, and capital gains tax when you sell assets for a profit.
+
+To encourage citizens to save for their own retirements, the government created special **tax-advantaged accounts**. These accounts legally shield your investments from taxes, allowing your money to compound far faster. Understanding which accounts to prioritize is a cornerstone of smart wealth building.
+
+## Employer-Sponsored Plans: The 401(k)
+
+A 401(k) is an investment account offered by employers.
+* **Traditional 401(k):** Contributions are made with **pre-tax dollars**, reducing your taxable income today. Your investments grow tax-deferred, and you pay standard income tax when you withdraw the funds in retirement.
+* **Roth 401(k):** Contributions are made with **after-tax dollars**. Your investments grow tax-free, and your withdrawals in retirement are completely tax-free.
+
+### 🎁 The Employer Match: Free Money
+Many companies offer a matching program (e.g., matching 100% of your contributions up to 4% of your salary). **This is an instant, guaranteed 100% return on your money.** Always contribute at least enough to claim your full employer match before investing anywhere else.
+
+## Individual Retirement Accounts: IRAs
+
+If your employer does not offer a 401(k), or if you want to save beyond your workplace plan, you can open an Individual Retirement Account (IRA) at any major brokerage.
+
+| Feature | Traditional IRA | Roth IRA |
+| :--- | :--- | :--- |
+| **Tax Treatment** | Pre-tax (contributions may be tax-deductible today) | After-tax (contributions are made with post-tax income) |
+| **Growth Period** | Tax-deferred compounding | 100% tax-free growth |
+| **Withdrawals** | Taxed as ordinary income in retirement | 100% tax-free after age 59½ |
+| **Income Limits** | Deductibility phases out at high income levels | Direct contributions phase out at high income levels |
+| **Required Minimum Distributions (RMDs)** | Yes, must withdraw starting at age 73 | No, can leave funds in the account forever |
+
+### Why the Roth IRA is a Wealth Builder's Favorite
+The Roth IRA is highly favored because of its tax-free withdrawals and flexibility. Because you have already paid taxes on your contributions, you are legally permitted to **withdraw your original contributions at any time, for any reason, completely tax-free and penalty-free**. Only your investment *earnings* must remain untouched until retirement to avoid penalties.
+
+## The Ultimate Secret Weapon: The Health Savings Account (HSA)
+
+An HSA is designed to help individuals with High-Deductible Health Plans (HDHPs) pay for medical expenses. However, it is secretly the most powerful investment account in existence because it offers a **triple tax advantage**:
+
+1. **Pre-Tax Contributions:** Contributions are 100% tax-deductible, reducing your current tax bill.
+2. **Tax-Free Growth:** Your investments compound completely free of taxes.
+3. **Tax-Free Withdrawals:** Withdrawals are 100% tax-free at any age when used for qualified medical expenses.
+
+**Retirement Trick:** Once you turn 65, the HSA behaves exactly like a traditional IRA. You can withdraw money for non-medical expenses and pay standard income tax on it, with zero penalties. If you use it for medical bills, it remains tax-free.
+
+## The Optimal Investment Priority Order
+
+To maximize tax shields and capture all government incentives, most financial planners recommend this general hierarchy:
+
+1. **Invest in your 401(k) up to the employer match limit** (Capture the free 100% return).
+2. **Max out your HSA** (Capture the triple tax advantage).
+3. **Max out your Roth IRA** (Capture tax-free growth and flexible withdrawal rules).
+4. **Return to your 401(k)** and invest remaining funds up to the federal limit.
+5. **Invest in a taxable brokerage account** only after all tax-advantaged accounts are maxed.
+    `,
+    faqs: [
+      {
+        question: 'Can I have both a 401(k) and an IRA?',
+        answer: 'Yes. You are fully allowed to contribute to both a workplace 401(k) and an individual IRA in the same tax year, subject to separate contribution limits.'
+      },
+      {
+        question: 'What happens if I withdraw from a Traditional IRA before age 59½?',
+        answer: 'You will owe ordinary income taxes on the withdrawn amount plus an additional 10% early withdrawal penalty from the IRS.'
+      }
+    ]
+  },
+  {
+    slug: 'rent-vs-buy-hidden-costs',
+    title: 'Renting vs. Buying a Home: Exposing the True Unrecoverable Costs',
+    metaDescription: 'Compare renting vs. buying beyond the mortgage. Understand the hidden costs of homeownership like property tax, maintenance, and interest.',
+    readTime: '8 min read',
+    category: 'loans',
+    summary: 'Is renting throwing money away? Is buying always a guaranteed wealth-builder? We expose the math behind unrecoverable costs on both sides.',
+    content: `
+## Moving Past the "Rent is Throwing Money Away" Myth
+
+If you ask the average person about real estate, they will likely tell you that renting a home is "throwing money away" because you are paying your landlord's mortgage, whereas buying a home is "building wealth" because you own an asset.
+
+This is a simplistic and mathematically flawed comparison. In reality, **both renting and buying have massive unrecoverable costs**. An unrecoverable cost is cash you spend that does not build equity and is gone forever. To make an objective decision, you must compare these friction points side-by-side.
+
+## The Unrecoverable Costs of Renting
+
+For renters, the math is incredibly simple.
+* **The Rent:** 100% of your monthly rent check is an unrecoverable cost. It is gone forever, providing you with 30 days of housing shelter.
+* **Renter's Insurance:** A tiny monthly fee, completely unrecoverable.
+
+The primary benefit of renting is that your rent is the **absolute maximum** you will pay for housing in a given month. If a pipe bursts or the HVAC system fails, your landlord covers the bill. Furthermore, renting keeps your capital free to invest in other growing assets like equities.
+
+## The Unrecoverable Costs of Buying
+
+For homeowners, your monthly mortgage payment is not your only expense. In fact, a large portion of your monthly cash flow is consumed by unrecoverable costs that do not build equity:
+
+1. **Mortgage Interest:** In the early years of a 30-year mortgage, the majority of your payment goes straight to bank interest, which is unrecoverable.
+2. **Property Taxes:** Paid to your local government annually to fund schools, roads, and emergency services. This fee increases over time and is gone forever.
+3. **Home Maintenance:** Houses degrade. Experts recommend budgeting **1% to 2% of the home's value annually** for maintenance, repairs, and appliance replacements (e.g., roof, HVAC, plumbing).
+4. **Homeowners Insurance & HOA Fees:** Required premiums and neighborhood dues that build zero equity.
+5. **Transaction Costs:** When buying and selling, you pay real estate agent commissions (usually 5% to 6% of the sale price), loan origination fees, appraisal fees, and title insurance. These frictional fees eat up years of potential equity growth.
+
+The downside of buying is that your monthly mortgage payment is the **absolute minimum** you will pay for housing in a given month.
+
+## The 5% Rule of Thumb for Comparison
+
+To easily compare the unrecoverable costs of renting versus buying, financial educator Ben Felix popularized the **5% Rule**. 
+
+To estimate the annual unrecoverable cost of owning a home, multiply the home's purchase price by 5%. This 5% represents:
+* **1%** for property taxes
+* **1%** for maintenance costs
+* **3%** for the cost of capital (mortgage interest or the opportunity cost of having your down payment locked in the house instead of the stock market).
+
+### Applying the Rule:
+* **Buying a $400,000 home:**
+  * Annual Unrecoverable Cost: $\$400,000 \\times 5\\% = \$20,000$ per year.
+  * Monthly Unrecoverable Cost: $\$20,000 / 12 = \$1,666$ per month.
+* **The Comparison:** If you can rent an equivalent home for **less than $1,666 per month**, renting is mathematically superior. You can invest your down payment in stocks and generate a higher net worth. If rent is over $1,666, buying is superior.
+    `,
+    faqs: [
+      {
+        question: 'Does buying a home protect me from inflation?',
+        answer: 'Generally, yes. Real estate values and rents historically track inflation, and locking in a fixed-rate mortgage ensures your baseline housing payment remains constant while rental rates rise.'
+      },
+      {
+        question: 'Is a house a good primary investment?',
+        answer: 'Historically, nationwide home values outpace inflation by only 1% to 2% per year. Stocks tend to perform much better. View a home primarily as a lifestyle choice and shelter, rather than an aggressive growth asset.'
+      }
+    ]
+  },
+  {
+    slug: 'how-to-calculate-net-worth',
+    title: 'How to Calculate Your Net Worth: The Ultimate Scorecard for Wealth',
+    metaDescription: 'Step-by-step guide to calculating your net worth. Learn how to track assets, value liabilities, and monitor your long-term financial trajectory.',
+    readTime: '6 min read',
+    category: 'savings',
+    summary: 'Your net worth is the ultimate indicator of your overall financial fitness. Learn how to compute it, analyze it, and accelerate its growth.',
+    content: `
+## What is Net Worth?
+
+In personal finance, your net worth is the absolute sum of everything you own (your assets) minus everything you owe (your liabilities). It is the single most accurate financial scoreboard in existence.
+
+$$\\text{Net Worth} = \\text{Total Assets} - \\text{Total Liabilities}$$
+
+Unlike focusing solely on high income, net worth tells you if you are actually keeping and growing your wealth. A surgeon earning $500,000 a year who spends $510,000 has a lower net worth than a teacher earning $60,000 who saves $10,000 a year.
+
+## Step-by-Step Net Worth Calculation
+
+To find your net worth, gather your current financial balances and divide them into two lists:
+
+### Step 1: List and Total Your Assets
+Assets are items of economic value that can be converted into cash.
+* **Liquid Assets:** Cash, checking accounts, High-Yield Savings Accounts (HYSAs), and certificates of deposit (CDs).
+* **Investment Assets:** Retirement accounts (401k, Roth IRA, HSA) and taxable brokerage portfolios.
+* **Real Estate Assets:** The current market value of your home or investment properties (estimate using recent neighborhood comparable sales, not purchase price).
+* **Personal Property:** Vehicles (use blue book value), valuable jewelry, or collectibles (exclude standard furniture and clothing as they deprecate rapidly).
+
+### Step 2: List and Total Your Liabilities
+Liabilities are outstanding debts owed to other people or institutions.
+* **Mortgages:** The outstanding principal balance on your home or rental property loans.
+* **Personal Loans:** Auto loans, student loans, or personal bank loans.
+* **Revolving Debt:** Credit card balances (even if you pay them off in full at the end of the month, the current balance counts as a temporary liability).
+* **Other Liabilities:** Back taxes, medical bills, or private family loans.
+
+### Step 3: Subtract Liabilities from Assets
+Let us look at a standard example:
+* **Assets:**
+  * Savings & Cash: $15,000
+  * Roth IRA: $35,000
+  * Primary Home Value: $350,000
+  * Vehicle Value: $15,000
+  * **Total Assets: $415,000**
+* **Liabilities:**
+  * Mortgage Principal: $220,000
+  * Student Loans: $20,000
+  * Credit Card Balance: $2,000
+  * **Total Liabilities: $242,000**
+* **Net Worth:**
+  * $\$415,000 - \$242,000 = \$173,000$
+
+## Why Tracking Net Worth is Crucial
+
+* **Forces Financial Honesty:** You cannot hide from a net worth calculation. It cuts through the noise of high lease payments and credit card spending, showing your actual wealth.
+* **Tracks Progress Over Time:** Update your net worth quarterly or semi-annually. Watching your net worth line tick upward provides incredible motivation to save and invest.
+* **Prepares You for Milestones:** Whether applying for a mortgage, preparing for retirement, or planning to leave your job to start a company, your net worth determines your financial security.
+    `,
+    faqs: [
+      {
+        question: 'What is a normal net worth by age?',
+        answer: 'Net worth varies drastically. According to Federal Reserve data, the median net worth for households under 35 is around $39,000, while for those aged 55-64 it is around $364,000.'
+      },
+      {
+        question: 'Can my net worth be negative?',
+        answer: 'Yes, and this is very common for recent college graduates with substantial student loans or young buyers who have recently taken on high debt. Consistently saving and paying down debt will pull you into positive territory.'
+      }
+    ]
+  },
+  {
+    slug: 'understanding-credit-card-debt',
+    title: 'Understanding Credit Card Debt: How High Interest Compounds Against You',
+    metaDescription: 'Demystify credit card interest. Understand APR calculations, minimum payment traps, and how compound interest works for banks and against you.',
+    readTime: '7 min read',
+    category: 'debt',
+    summary: 'Credit card debt is one of the most destructive forces in personal finance. Discover the mathematical mechanics of APR compounding and how to escape the minimum payment trap.',
+    content: `
+## The Dangerous Compounding Machine
+
+We often celebrate compound interest as the greatest wealth builder for investors. However, compound interest is a double-edged sword. When you carry credit card debt, compound interest is the ultimate weapon used by banks *against* you.
+
+Credit cards are revolving lines of credit with exceptionally high interest rates, typically ranging from **15% to 30% APR (Annual Percentage Rate)**. At these rates, interest charges pile up with terrifying speed, trapping consumers in a spiral of debt.
+
+## How Credit Card Interest is Calculated
+
+Banks advertise an annual interest rate (APR), but they actually calculate your interest charge on a **daily basis**. 
+
+### 1. The Daily Periodic Rate
+To find your daily rate, divide your APR by 365:
+$$\\text{Daily Periodic Rate} = \\frac{\\text{APR}}{365}$$
+At a **24% APR**, your daily periodic rate is:
+$$24\\% / 365 = 0.06575\\% \\text{ per day}$$
+
+### 2. Computing the Daily Charge
+Each day, the credit card company multiplies your Average Daily Balance by this daily rate and adds it to your account balance. 
+If you carry a **$5,000 balance** at 24% APR, you are charged approximately:
+$$\$5,000 \\times 0.06575\\% = \$3.29 \\text{ in interest per day}$$
+Over a month, this equals roughly **$100 in interest charges**, even if you do not make a single new purchase!
+
+## The Danger of the Minimum Payment Trap
+
+When your statement arrives, credit card issuers are legally required to list your "Minimum Payment"—often calculated as just 1% to 2% of the outstanding balance plus interest. 
+
+Many consumers believe that paying the minimum is a responsible way to manage their account. This is exactly what banks want. The minimum payment is mathematically designed to **keep you in debt for as long as possible while maximizing the bank's interest income**.
+
+### The Math in Action:
+Suppose you have a **$10,000 credit card balance** at a standard **22% APR**:
+* **If you pay only the minimum payment (starting at ~$250/mo):**
+  * It will take you **30 years** to pay off the debt.
+  * You will pay over **$21,000 in interest fees alone** on top of the original $10,000 you borrowed.
+* **If you commit to a fixed payment of $400/month:**
+  * It will take you only **3 years** to hit a zero balance.
+  * You will pay **$3,700 in interest**, saving you over $17,000 and 27 years of debt!
+
+## How to Break Free From Credit Card Debt
+
+If you are carrying credit card debt, implement this recovery plan immediately:
+
+1. **Stop Charging:** Lock your cards in a drawer or freeze them. You cannot climb out of a hole while continuing to dig.
+2. **Commit to Overpaying the Minimum:** Even an extra $50 or $100 per month above the minimum makes a massive mathematical difference in cutting the compound loop.
+3. **Use a Payoff Strategy:** Implement either the **Debt Snowball** (focusing on psychological wins by clearing small accounts) or the **Debt Avalanche** (minimizing interest by targeting highest APR accounts).
+4. **Negotiate or Balance Transfer:** If you have decent credit, transfer your high-rate balance to a 0% introductory APR card for 12 to 18 months, ensuring 100% of your payments go directly to principal.
+    `,
+    faqs: [
+      {
+        question: 'What is a grace period on a credit card?',
+        answer: 'A grace period is the time between the end of a billing cycle and your payment due date (usually 21-25 days). If you pay your statement balance in full every month, the bank waives interest on new purchases, meaning you pay 0% interest.'
+      },
+      {
+        question: 'Does carrying a credit card balance help my credit score?',
+        answer: 'No! This is a persistent and expensive myth. Carrying a balance does not improve your score; it only drains your bank account in interest fees. Paying your balance in full every month is the best way to build excellent credit.'
+      }
+    ]
   }
 ];

@@ -42,6 +42,25 @@ export default function SEO({
     }
     linkCanonical.setAttribute('href', canonicalUrl);
 
+    // Update Open Graph tags dynamically for rich social previews
+    const ogTags = {
+      'og:title': title,
+      'og:description': description,
+      'og:url': canonicalUrl,
+      'og:type': schemaType === 'guide' ? 'article' : 'website',
+      'og:image': 'https://moneymetrichubs.com/og-image.png',
+    };
+
+    Object.entries(ogTags).forEach(([property, content]) => {
+      let el = document.querySelector(`meta[property="${property}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute('property', property);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    });
+
     // Prevent duplicate indexing on testing/staging domains (like Vercel or AI Studio previews)
     const currentHost = window.location.hostname;
     const isPrimaryDomain = currentHost === 'moneymetrichubs.com';
@@ -106,7 +125,7 @@ export default function SEO({
       '@context': 'https://schema.org',
       '@type': 'Organization',
       '@id': 'https://moneymetrichubs.com/#organization',
-      'name': 'MoneyMetricsHub',
+      'name': 'Money Metric Hubs',
       'url': 'https://moneymetrichubs.com',
       'logo': 'https://moneymetrichubs.com/logo.png',
       'description': 'Premium finance calculator platform for smart financial decisions.',
@@ -125,7 +144,7 @@ export default function SEO({
         '@type': 'WebSite',
         '@id': 'https://moneymetrichubs.com/#website',
         'url': 'https://moneymetrichubs.com',
-        'name': 'MoneyMetricsHub',
+        'name': 'Money Metric Hubs',
         'description': 'Smarter Financial Decisions Through Better Numbers',
         'potentialAction': {
           '@type': 'SearchAction',
@@ -207,7 +226,7 @@ export default function SEO({
         'url': `${baseUrl}/${slug}`,
         'publisher': {
           '@type': 'Organization',
-          'name': 'MoneyMetricsHub',
+          'name': 'Money Metric Hubs',
           'logo': {
             '@type': 'ImageObject',
             'url': 'https://moneymetrichubs.com/logo.png'
@@ -215,7 +234,7 @@ export default function SEO({
         },
         'author': {
           '@type': 'Organization',
-          'name': 'MoneyMetricsHub Editorial Team'
+          'name': 'Money Metric Hubs Editorial Team'
         }
       };
       schemas.push(articleSchema);

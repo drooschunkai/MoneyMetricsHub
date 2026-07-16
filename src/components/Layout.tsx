@@ -60,7 +60,7 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
               </div>
               <div>
                 <span className="font-display font-black text-lg tracking-tight text-slate-900 dark:text-white block leading-none">
-                  MoneyMetrics<span className="text-blue-600 dark:text-blue-400">Hub</span>
+                  Money Metric <span className="text-blue-600 dark:text-blue-400">Hubs</span>
                 </span>
                 <span className="text-[9px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-widest mt-0.5 block leading-none">
                   Precision Finance
@@ -296,7 +296,7 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
                   M
                 </div>
                 <span className="font-display font-extrabold text-base tracking-tight text-white">
-                  MoneyMetrics<span className="text-blue-400">Hub</span>
+                  Money Metric <span className="text-blue-400">Hubs</span>
                 </span>
               </div>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-sm">
@@ -388,10 +388,10 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
           {/* Core regulatory disclaimer and copyright line */}
           <div className="border-t border-slate-800 mt-16 pt-8 space-y-4 text-center">
             <p className="text-[10px] text-slate-500 max-w-4xl mx-auto leading-relaxed">
-              <strong>Disclaimer:</strong> MoneyMetricsHub is an informational and educational publisher, not an investment, legal, or CPA advisor. The formulas, numbers, and calculators displayed here are estimations only. Past return metrics are not indicators of future yield curves. Always consult a professional before entering into binding loan contracts or committing capital.
+              <strong>Disclaimer:</strong> Money Metric Hubs is an informational and educational publisher, not an investment, legal, or CPA advisor. The formulas, numbers, and calculators displayed here are estimations only. Past return metrics are not indicators of future yield curves. Always consult a professional before entering into binding loan contracts or committing capital.
             </p>
             <p className="text-[11px] text-slate-500 font-semibold tracking-wide">
-              © 2026 MoneyMetricsHub. All rights reserved. Built for complete mobile and search transparency.
+              © 2026 Money Metric Hubs. All rights reserved. Built for complete mobile and search transparency.
             </p>
           </div>
 
