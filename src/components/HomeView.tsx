@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as Lucide from 'lucide-react';
 import { categories } from '../data/categories';
 import { calculators } from '../data/calculators';
+import { guides } from '../data/guides';
 import SEO from './SEO';
 
 interface HomeViewProps {
@@ -276,6 +277,76 @@ export default function HomeView({ onNavigate }: HomeViewProps) {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Latest Wealth & Financial Guides */}
+      <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div className="space-y-2">
+            <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+              Latest Wealth & Financial Guides
+            </h2>
+            <p className="text-slate-500 dark:text-slate-400 text-sm max-w-xl">
+              Deepen your financial intelligence with our newly added research articles and expert-approved cash flow metrics.
+            </p>
+          </div>
+          <button
+            onClick={() => onNavigate('blog')}
+            className="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center gap-1 cursor-pointer transition-colors"
+          >
+            Go to Knowledge Hub
+            <Lucide.ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {guides.slice(0, 3).map((guide) => {
+            const catDetails = categories.find((c) => c.slug === guide.category) || {
+              name: guide.category.charAt(0).toUpperCase() + guide.category.slice(1),
+              icon: 'BookOpen'
+            };
+            const IconComp = (Lucide as any)[catDetails.icon] || Lucide.BookOpen;
+
+            return (
+              <div
+                key={guide.slug}
+                onClick={() => onNavigate(`guides/${guide.slug}`)}
+                className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-slate-700 p-6 rounded-2xl shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 flex flex-col justify-between group h-full"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between text-[10px] font-semibold text-slate-400">
+                    <span className="flex items-center gap-1 text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30 px-2 py-0.5 rounded-md border border-blue-100/30">
+                      <IconComp className="w-3 h-3" />
+                      {catDetails.name}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Lucide.Clock className="w-3.5 h-3.5" />
+                      {guide.readTime}
+                    </span>
+                  </div>
+
+                  <h3 className="font-display text-base font-extrabold text-slate-850 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+                    {guide.title}
+                  </h3>
+                  
+                  <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                    {guide.summary}
+                  </p>
+                </div>
+
+                <div className="border-t border-slate-50 dark:border-slate-800/80 mt-5 pt-4 flex items-center justify-between text-xs">
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500">
+                    Amortization & Models Included
+                  </span>
+                  <span className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    Read Guide
+                    <Lucide.ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

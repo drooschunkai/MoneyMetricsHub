@@ -16,6 +16,7 @@ import SitemapView from './components/SitemapView';
 import DashboardView from './components/DashboardView';
 import ComparisonView from './components/ComparisonView';
 import NotFoundView from './components/NotFoundView';
+import BlogView from './components/BlogView';
 
 interface RouteState {
   name: string;
@@ -47,6 +48,11 @@ function parseLocation(): RouteState {
   if (path.startsWith('/calculators/')) {
     const slug = path.replace('/calculators/', '');
     return { name: 'calculator', params: { slug } };
+  }
+
+  // Blog hub paths
+  if (path === '/blog' || path === '/blog/' || path === '/guides' || path === '/guides/') {
+    return { name: 'blog', params: {} };
   }
 
   // 4. Guides path: /guides/:slug
@@ -137,6 +143,9 @@ export default function App() {
       
       case 'calculator':
         return <CalculatorView calculatorSlug={route.params.slug} onNavigate={handleNavigate} />;
+      
+      case 'blog':
+        return <BlogView onNavigate={handleNavigate} />;
       
       case 'guide':
         return <GuideView guideSlug={route.params.slug} onNavigate={handleNavigate} />;
