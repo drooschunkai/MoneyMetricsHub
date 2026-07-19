@@ -3,6 +3,7 @@ import * as Lucide from 'lucide-react';
 import { calculators } from '../data/calculators';
 import { categories } from '../data/categories';
 import { programmaticSEOPages } from '../data/programmaticSEO';
+import { blogArticles } from '../data/blog';
 import SEO from './SEO';
 
 interface SitemapViewProps {
@@ -109,6 +110,23 @@ export default function SitemapView({ onNavigate }: SitemapViewProps) {
                 <span>General Financial Disclaimer</span>
               </button>
             </li>
+          </ul>
+
+          <h2 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-2 border-b border-slate-100 dark:border-slate-800 pb-2 pt-4">
+            <Lucide.BookOpen className="w-4 h-4 text-blue-600" />
+            <span>Finance & Math Blog</span>
+          </h2>
+          <ul className="space-y-1 pl-2.5 border-l border-slate-100 dark:border-slate-800 text-xs font-semibold">
+            {blogArticles.map((article) => (
+              <li key={article.slug}>
+                <button
+                  onClick={() => onNavigate(`blog/${article.slug}`)}
+                  className="hover:underline text-blue-600 dark:text-blue-400 text-left"
+                >
+                  {article.title}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
 
