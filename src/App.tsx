@@ -50,11 +50,6 @@ function parseLocation(): RouteState {
     return { name: 'calculator', params: { slug } };
   }
 
-  // Blog hub paths
-  if (path === '/blog' || path === '/blog/' || path === '/guides' || path === '/guides/') {
-    return { name: 'blog', params: {} };
-  }
-
   // 4. Guides path: /guides/:slug
   if (path.startsWith('/guides/')) {
     const slug = path.replace('/guides/', '');
@@ -96,6 +91,15 @@ function parseLocation(): RouteState {
   if (path === '/dashboard' || path === '/search-console') return { name: 'dashboard', params: {} };
   if (path === '/compare') return { name: 'compare', params: {} };
   if (path === '/preferences' || path === '/hub') return { name: 'preferences', params: {} };
+
+  // Blog routes
+  if (path === '/blog' || path === '/blog/') {
+    return { name: 'blog', params: {} };
+  }
+  if (path.startsWith('/blog/')) {
+    const slug = path.replace('/blog/', '');
+    return { name: 'blog', params: { slug } };
+  }
 
   // 8. Legal and Info pages
   if (path === '/about') return { name: 'about', params: {} };
@@ -144,9 +148,6 @@ export default function App() {
       case 'calculator':
         return <CalculatorView calculatorSlug={route.params.slug} onNavigate={handleNavigate} />;
       
-      case 'blog':
-        return <BlogView onNavigate={handleNavigate} />;
-      
       case 'guide':
         return <GuideView guideSlug={route.params.slug} onNavigate={handleNavigate} />;
       
@@ -160,6 +161,9 @@ export default function App() {
       // Secondary Core Views Dispatch
       case 'newsletter':
         return <NewsletterView />;
+      
+      case 'blog':
+        return <BlogView articleSlug={route.params.slug} onNavigate={handleNavigate} />;
       
       case 'sitemap':
         return <SitemapView onNavigate={handleNavigate} />;

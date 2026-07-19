@@ -1,392 +1,457 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import * as Lucide from 'lucide-react';
-import { guides } from '../data/guides';
+import { blogArticles } from '../data/blog';
 import { categories } from '../data/categories';
 import SEO from './SEO';
 
 interface BlogViewProps {
+  articleSlug?: string;
   onNavigate: (route: string) => void;
 }
 
-export default function BlogView({ onNavigate }: BlogViewProps) {
+export default function BlogView({ articleSlug, onNavigate }: BlogViewProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const postsPerPage = 6;
+  const [readingProgress, setReadingProgress] = useState<number>(0);
 
-  // Find category details helper
-  const getCategoryDetails = (catSlug: string) => {
-    return categories.find((c) => c.slug === catSlug) || {
-      name: catSlug.charAt(0).toUpperCase() + catSlug.slice(1),
-      icon: 'BookOpen'
+  // If a slug is specified in the URL, render the active article, otherwise render the article list
+  const activeArticle = articleSlug ? blogArticles.find(a => a.slug === articleSlug) : null;
+
+  // Track reading scroll progress for detail article
+  useEffect(() => {
+    if (!activeArticle) {
+      setReadingProgress(0);
+      return;
+    }
+
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setReadingProgress(progress);
+      }
     };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeArticle]);
+
+  // Filter articles based on category pill selection & search input
+  const filteredArticles = blogArticles.filter(article => {
+    const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
+    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          article.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchesCategory && matchesSearch;
+  });
+
+  // Get matching category definition for styling
+  const getCategoryDetails = (catId: string) => {
+    return categories.find(c => c.id === catId) || { name: catId, icon: 'BookOpen', slug: catId };
   };
 
-  // Filter posts based on category and search query
-  const filteredGuides = useMemo(() => {
-    return guides.filter((guide) => {
-      const matchesCategory = selectedCategory === 'all' || guide.category === selectedCategory;
-      const matchesSearch = 
-        guide.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        guide.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        guide.content.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [selectedCategory, searchQuery]);
-
-  // Paginated posts
-  const paginatedGuides = useMemo(() => {
-    const startIndex = (currentPage - 1) * postsPerPage;
-    return filteredGuides.slice(startIndex, startIndex + postsPerPage);
-  }, [filteredGuides, currentPage]);
-
-  const totalPages = Math.ceil(filteredGuides.length / postsPerPage);
-
-  // Handle category change
-  const handleCategorySelect = (category: string) => {
-    setSelectedCategory(category);
-    setCurrentPage(1);
-  };
-
-  // Get count for each category
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: guides.length };
-    guides.forEach((guide) => {
-      counts[guide.category] = (counts[guide.category] || 0) + 1;
-    });
-    return counts;
-  }, []);
-
-  // Featured / Hero Post (first investing or retirement post or just first guide)
-  const featuredPost = useMemo(() => {
-    return guides.find((g) => g.slug === 'what-is-compound-interest') || guides[0];
-  }, []);
-
-  // Render Category Icon dynamically
-  const renderCategoryIcon = (iconName: string, className: string = "w-4 h-4") => {
+  // Dynamically render category icons
+  const renderCategoryIcon = (iconName: string, className = "w-4 h-4") => {
     const IconComponent = (Lucide as any)[iconName] || Lucide.BookOpen;
     return <IconComponent className={className} />;
   };
 
+  // Related articles (excluding current one)
+  const relatedArticles = activeArticle 
+    ? blogArticles.filter(a => a.slug !== activeArticle.slug).slice(0, 3)
+    : [];
+
+  if (activeArticle) {
+    const catDetails = getCategoryDetails(activeArticle.category);
+
+    return (
+      <div className="animate-fade-in transition-colors duration-200">
+        <SEO 
+          title={`${activeArticle.title} | Money Metric Hubs Blog`}
+          description={activeArticle.metaDescription}
+          schemaType="guide"
+          slug={`blog/${activeArticle.slug}`}
+        />
+
+        {/* Scroll Reading Progress Bar Indicator */}
+        <div 
+          className="fixed top-16 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-emerald-500 z-50 transition-all duration-100"
+          style={{ width: `${readingProgress}%` }}
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          
+          {/* Breadcrumb Path */}
+          <nav className="flex text-xs text-slate-500 gap-1.5 items-center mb-8">
+            <button onClick={() => onNavigate('')} className="hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors">Home</button>
+            <Lucide.ChevronRight className="w-3.5 h-3.5 text-slate-300" />
+            <button onClick={() => onNavigate('blog')} className="hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors font-semibold">Blog</button>
+            <Lucide.ChevronRight className="w-3.5 h-3.5 text-slate-300" />
+            <span className="text-slate-400 dark:text-slate-500 truncate max-w-[240px]">{activeArticle.title}</span>
+          </nav>
+
+          {/* Return To List Button */}
+          <button 
+            onClick={() => onNavigate('blog')}
+            className="group flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 mb-8 transition-colors cursor-pointer"
+          >
+            <Lucide.ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Articles List
+          </button>
+
+          {/* Article Layout Frame */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            
+            {/* Primary Article Body Column */}
+            <article className="lg:col-span-8 space-y-8 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-6 sm:p-10 rounded-3xl shadow-sm">
+              
+              {/* Category tag & reading times */}
+              <div className="flex flex-wrap items-center gap-3 text-xs font-semibold">
+                <button 
+                  onClick={() => {
+                    onNavigate(`categories/${catDetails.slug}`);
+                  }}
+                  className="bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full uppercase tracking-wider text-[10px] border border-blue-100/50 dark:border-blue-900/30 flex items-center gap-1.5 hover:bg-blue-100 transition-colors"
+                >
+                  {renderCategoryIcon(catDetails.icon, "w-3 h-3")}
+                  {catDetails.name}
+                </button>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
+                <span className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
+                  <Lucide.Clock className="w-3.5 h-3.5" />
+                  {activeArticle.readTime}
+                </span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
+                <span className="text-slate-500 dark:text-slate-400">{activeArticle.publishDate}</span>
+              </div>
+
+              {/* Title Header */}
+              <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
+                {activeArticle.title}
+              </h1>
+
+              {/* EEAT Author Card Bio */}
+              <div className="flex items-center gap-3.5 p-4 bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800 rounded-2xl">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-extrabold text-sm shadow">
+                  {activeArticle.author.split(' ').map(n => n[0]).join('')}
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                    {activeArticle.author}
+                    <span className="text-[9px] bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-300 px-1.5 py-0.5 rounded font-black uppercase tracking-widest">FINANCE AUTHOR</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400 dark:text-slate-500">Expert Columnist • Verified Mathematical Models & Formulas</p>
+                </div>
+              </div>
+
+              {/* Article Content Render */}
+              <div 
+                className="prose prose-slate dark:prose-invert max-w-none text-slate-650 dark:text-slate-300 leading-relaxed space-y-6 text-sm sm:text-base 
+                  [&>h3]:font-display [&>h3]:text-lg [&>h3]:sm:text-xl [&>h3]:font-bold [&>h3]:text-slate-900 [&>h3]:dark:text-white [&>h3]:pt-4 [&>h3]:pb-1 [&>h3]:border-b [&>h3]:border-slate-50 [&>h3]:dark:border-slate-800/80
+                  [&>h4]:font-display [&>h4]:text-sm [&>h4]:sm:text-base [&>h4]:font-bold [&>h4]:text-slate-800 [&>h4]:dark:text-slate-200 [&>h4]:pt-3
+                  [&>p]:leading-relaxed [&>p]:text-slate-650 [&>p]:dark:text-slate-300
+                  [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-1.5 [&>ul]:text-slate-650 [&>ul]:dark:text-slate-300
+                  [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-1.5 [&>ol]:text-slate-650 [&>ol]:dark:text-slate-300
+                  [&_strong]:font-bold [&_strong]:text-slate-900 [&_strong]:dark:text-white
+                  [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_table]:text-xs [&_th]:bg-slate-50 [&_th]:dark:bg-slate-950 [&_th]:p-3 [&_th]:border [&_th]:border-slate-200 [&_th]:dark:border-slate-800 [&_td]:p-3 [&_td]:border [&_td]:border-slate-150 [&_td]:dark:border-slate-800
+                "
+                dangerouslySetInnerHTML={{ __html: activeArticle.content }}
+              />
+
+              {/* Tags & Share options */}
+              <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap justify-between items-center gap-4">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <Lucide.Tag className="w-3.5 h-3.5 text-slate-400" />
+                  {activeArticle.tags.map(tag => (
+                    <span 
+                      key={tag}
+                      className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2.5 py-0.5 rounded-full"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <button 
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    alert("Article link copied to clipboard!");
+                  }}
+                  className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  <Lucide.Share2 className="w-4 h-4" />
+                  Copy Link
+                </button>
+              </div>
+
+            </article>
+
+            {/* Sidebar Columns (Related articles & Categories) */}
+            <div className="lg:col-span-4 space-y-6">
+              
+              {/* Category jump list */}
+              <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-4">
+                <h3 className="font-display font-bold text-slate-900 dark:text-white text-sm border-b border-slate-50 dark:border-slate-800 pb-2">
+                  Browse by Category
+                </h3>
+                <div className="flex flex-col gap-1">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => {
+                        onNavigate(`categories/${cat.slug}`);
+                      }}
+                      className="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-850 transition-colors flex items-center justify-between group cursor-pointer"
+                    >
+                      <div className="flex items-center gap-2">
+                        {renderCategoryIcon(cat.icon, "w-4 h-4 text-slate-400 group-hover:text-blue-500")}
+                        <span>{cat.name}</span>
+                      </div>
+                      <Lucide.ArrowRight className="w-3 h-3 text-slate-300 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Related Blog Posts */}
+              <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-4">
+                <h3 className="font-display font-bold text-slate-900 dark:text-white text-sm border-b border-slate-50 dark:border-slate-800/80 pb-2 flex items-center gap-2">
+                  <Lucide.Sparkles className="w-4 h-4 text-amber-500" />
+                  Keep Reading
+                </h3>
+                <div className="space-y-4">
+                  {relatedArticles.map((art) => {
+                    const innerCat = getCategoryDetails(art.category);
+                    return (
+                      <div 
+                        key={art.slug} 
+                        onClick={() => onNavigate(`blog/${art.slug}`)}
+                        className="group space-y-1 cursor-pointer border-b border-slate-50 dark:border-slate-850 pb-3 last:border-0 last:pb-0"
+                      >
+                        <span className="text-[9px] font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400 block">
+                          {innerCat.name}
+                        </span>
+                        <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
+                          {art.title}
+                        </h4>
+                        <div className="flex items-center gap-1.5 text-[10px] text-slate-400">
+                          <span>{art.readTime}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* CTA Newsletter block */}
+              <div className="p-6 bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-3xl shadow-md space-y-4">
+                <Lucide.MailOpen className="w-8 h-8 text-blue-200" />
+                <h4 className="font-display font-black text-base">Weekly Financial Briefing</h4>
+                <p className="text-xs text-blue-100 leading-relaxed">
+                  Join 12,000+ smart investors and readers. Get verified mathematical analysis, tools, and regulatory changes directly to your inbox.
+                </p>
+                <button
+                  onClick={() => onNavigate('newsletter')}
+                  className="w-full py-2.5 bg-white text-blue-700 hover:bg-blue-50 text-xs font-bold rounded-xl shadow-sm transition-all cursor-pointer"
+                >
+                  Join Newsletter
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
+  // ELSE: ARTICLE LIST VIEW
   return (
-    <div className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 transition-colors duration-200" id="blog-knowledge-hub">
-      <SEO
-        title="Financial Library & Wealth Guides | Money Metric Hubs"
-        description="Explore our library of expert-reviewed guides covering compound interest, retirement planning, debt management, taxes, and business metrics."
+    <div className="animate-fade-in transition-colors duration-200">
+      <SEO 
+        title="Expert Personal Finance Blog | Money Metric Hubs"
+        description="Master your money with our verified, expert-reviewed articles, formulas, and guides matching our 8 core financial categories."
+        schemaType="basic"
         slug="blog"
       />
 
-      {/* Breadcrumbs */}
-      <nav className="flex text-xs text-slate-500 gap-1.5 items-center mb-6">
-        <button onClick={() => onNavigate('')} className="hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors">Home</button>
-        <Lucide.ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-        <span className="text-slate-800 dark:text-slate-200 font-medium">Blog</span>
-      </nav>
-
-      {/* Hero Banner */}
-      <div className="bg-gradient-to-r from-blue-900 via-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-12 border border-slate-850 shadow-xl mb-12 relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute left-1/3 bottom-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="max-w-2xl space-y-4 relative z-10">
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest bg-blue-950/50 border border-blue-900/50 px-3 py-1 rounded-full inline-block">
-            Financial Education Hub
+      {/* Banner Hero Section */}
+      <div className="bg-slate-900 text-white dark:bg-slate-950 py-16 border-b border-slate-800 transition-colors duration-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <span className="text-xs bg-blue-500/20 text-blue-400 border border-blue-500/30 px-3.5 py-1 rounded-full uppercase tracking-widest font-black">
+            Our Editorial Blog
           </span>
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">
-            Smarter Financial Decisions Through Better Numbers
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none text-white">
+            Precision Financial <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Insights</span>
           </h1>
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Expand your financial literacy with expert-reviewed guides, detailed formulas, and practical calculators designed to compound your wealth and optimize cash flow.
+          <p className="text-slate-400 text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+            Deep diving into our 8 core financial categories. Transparent mathematical models, expert perspectives, and actionable wealth-building strategies.
           </p>
         </div>
       </div>
 
-      {/* Featured Article Spot (Only show when not searching or filtering, on page 1) */}
-      {selectedCategory === 'all' && searchQuery === '' && currentPage === 1 && featuredPost && (
-        <div className="mb-12">
-          <h2 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Featured Guide</h2>
-          <div 
-            onClick={() => onNavigate(`guides/${featuredPost.slug}`)}
-            className="group bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 cursor-pointer"
-          >
-            {/* Visual Thumbnail side (styled fallback block with modern gradient) */}
-            <div className="lg:col-span-5 bg-gradient-to-tr from-blue-600 to-emerald-500 p-8 sm:p-12 flex flex-col justify-between text-white min-h-[240px] relative">
-              <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="flex justify-between items-start">
-                <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/20">
-                  {getCategoryDetails(featuredPost.category).name}
-                </span>
-                <Lucide.Sparkles className="w-5 h-5 text-white/80" />
-              </div>
-              <div className="space-y-2">
-                <p className="text-xs text-white/80 font-mono">{featuredPost.readTime}</p>
-                <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight tracking-tight">
-                  {featuredPost.title}
-                </h3>
-              </div>
-            </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-            {/* Meta details side */}
-            <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-              <div className="space-y-3">
-                <div className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-bold">
-                  <Lucide.ShieldCheck className="w-4 h-4" />
-                  <span>Expert Mathematical Analysis</span>
-                </div>
-                <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-                  {featuredPost.summary}
-                </p>
-                <div className="text-xs text-slate-400 dark:text-slate-500 pt-1">
-                  Covers key economic calculations, compounding frequencies, and standard mathematical formulas used by certified investment analysts.
-                </div>
-              </div>
-              
-              <div className="flex items-center justify-between border-t border-slate-50 dark:border-slate-800/85 pt-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-xs text-slate-600 dark:text-slate-400">
-                    MM
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-slate-800 dark:text-slate-200">Editorial Team</p>
-                    <p className="text-[10px] text-slate-400 dark:text-slate-500">Verified Calculator Formulas</p>
-                  </div>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1.5 transition-transform">
-                  Read Article
-                  <Lucide.ArrowRight className="w-4 h-4" />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Main Grid: Categories Sidebar & Article Listings */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        {/* Sidebar Controls (Categories & Search) */}
-        <div className="lg:col-span-3 space-y-6 lg:sticky lg:top-24">
-          
-          {/* Search Box */}
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-150 dark:border-slate-800 shadow-sm space-y-3.5">
-            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Search Articles</h3>
-            <div className="relative">
-              <Lucide.Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 w-4 h-4" />
-              <input
+        {/* Filters and Search Bar Container */}
+        <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm mb-10 space-y-4 transition-colors">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            
+            {/* Search Input */}
+            <div className="relative flex-grow max-w-md">
+              <Lucide.Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 w-4.5 h-4.5" />
+              <input 
                 type="text"
-                placeholder="Search keywords..."
+                placeholder="Search articles by keywords or tags..."
                 value={searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  setCurrentPage(1);
-                }}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:border-blue-500 px-10 py-2.5 rounded-xl text-xs text-slate-800 dark:text-slate-100 outline-none transition-colors"
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-slate-50 dark:bg-slate-950 pl-11 pr-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium border border-slate-100 dark:border-slate-800 outline-none focus:border-blue-500 focus:bg-white transition-all text-slate-700 dark:text-slate-200 placeholder:text-slate-400"
               />
               {searchQuery && (
                 <button 
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-400 hover:text-slate-600"
                 >
-                  <Lucide.X className="w-3.5 h-3.5" />
+                  Clear
                 </button>
               )}
             </div>
+
+            <div className="text-xs text-slate-400 font-medium">
+              Showing <strong>{filteredArticles.length}</strong> of <strong>{blogArticles.length}</strong> expert articles
+            </div>
+
           </div>
 
-          {/* Categories Selector */}
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-150 dark:border-slate-800 shadow-sm space-y-4">
-            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest">Library Categories</h3>
-            <div className="flex flex-col gap-1.5">
-              
-              {/* All Option */}
+          {/* Category Filter Pills (covers 8 categories) */}
+          <div className="border-t border-slate-50 dark:border-slate-805 pt-4">
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider font-bold mb-2.5 block">
+              Filter by Core Category:
+            </span>
+            <div className="flex flex-wrap gap-1.5">
               <button
-                onClick={() => handleCategorySelect('all')}
-                className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between cursor-pointer transition-colors ${
+                onClick={() => setSelectedCategory('all')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                   selectedCategory === 'all'
-                    ? 'bg-blue-600 text-white font-bold'
-                    : 'text-slate-600 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
                 }`}
               >
-                <div className="flex items-center gap-2.5">
-                  <Lucide.BookOpen className="w-4 h-4" />
-                  <span>All Articles</span>
-                </div>
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                  selectedCategory === 'all' ? 'bg-blue-700 text-blue-50' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
-                }`}>
-                  {categoryCounts.all}
-                </span>
+                <Lucide.Grid className="w-3.5 h-3.5" />
+                All Categories
               </button>
-
-              {/* Individual Categories */}
-              {categories.map((cat) => {
-                const count = categoryCounts[cat.id] || 0;
-                const isSelected = selectedCategory === cat.slug;
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => handleCategorySelect(cat.slug)}
-                    className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between cursor-pointer transition-colors ${
-                      isSelected
-                        ? 'bg-blue-600 text-white font-bold'
-                        : 'text-slate-600 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-slate-800/50'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      {renderCategoryIcon(cat.icon)}
-                      <span>{cat.name}</span>
-                    </div>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                      isSelected ? 'bg-blue-700 text-blue-50' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
-                    }`}>
-                      {count}
-                    </span>
-                  </button>
-                );
-              })}
-
+              
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                    selectedCategory === cat.id
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850'
+                  }`}
+                >
+                  {renderCategoryIcon(cat.icon, "w-3.5 h-3.5")}
+                  {cat.name}
+                </button>
+              ))}
             </div>
           </div>
-
         </div>
 
-        {/* Listings Grid */}
-        <div className="lg:col-span-9 space-y-8">
-          
-          {/* Header section listing details */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800/80">
-            <div>
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                {selectedCategory === 'all' ? 'All Financial Guides' : `${getCategoryDetails(selectedCategory).name} Collection`}
-              </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Showing {filteredGuides.length} {filteredGuides.length === 1 ? 'article' : 'articles'} in this selection
-              </p>
-            </div>
-            
-            {/* Sorting Info */}
-            <div className="text-[11px] text-slate-400 font-mono">
-              Sorting: Chronological Index
-            </div>
+        {/* Empty state when no articles match filters */}
+        {filteredArticles.length === 0 && (
+          <div className="text-center py-16 space-y-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-805 rounded-3xl">
+            <Lucide.BookOpen className="w-12 h-12 text-slate-300 mx-auto" />
+            <h3 className="font-bold text-slate-900 dark:text-white text-lg">No Articles Found</h3>
+            <p className="text-slate-400 text-sm max-w-sm mx-auto">
+              We couldn't find any articles matching your search query or filters. Try choosing a different category or clearing search filters.
+            </p>
+            <button 
+              onClick={() => {
+                setSelectedCategory('all');
+                setSearchQuery('');
+              }}
+              className="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl cursor-pointer"
+            >
+              Reset Filters
+            </button>
           </div>
+        )}
 
-          {/* Fallback Empty State */}
-          {filteredGuides.length === 0 && (
-            <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-12 text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-950 text-slate-400 border border-slate-100 dark:border-slate-800">
-                <Lucide.Search className="w-6 h-6" />
-              </div>
-              <h3 className="font-display text-lg font-bold text-slate-800 dark:text-slate-200">No Guides Found</h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
-                We couldn't find any articles matching "{searchQuery}" under the selected filter. Try adjusting your keywords or viewing "All Articles".
-              </p>
-              <button
-                onClick={() => {
-                  setSelectedCategory('all');
-                  setSearchQuery('');
-                  setCurrentPage(1);
-                }}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-750 text-white font-semibold text-xs rounded-xl cursor-pointer"
+        {/* Bento/Grid list of articles */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredArticles.map((article, index) => {
+            const catInfo = getCategoryDetails(article.category);
+            // Highlight first article as featured hero element if it has no category selected
+            const isFeaturedHero = index === 0 && selectedCategory === 'all' && !searchQuery;
+
+            return (
+              <div 
+                key={article.slug}
+                onClick={() => onNavigate(`blog/${article.slug}`)}
+                className={`group flex flex-col justify-between bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-200 dark:hover:border-slate-700 cursor-pointer transition-all duration-200 
+                  ${isFeaturedHero ? 'md:col-span-2 lg:col-span-3 lg:flex-row' : ''}`}
               >
-                Clear All Filters
-              </button>
-            </div>
-          )}
-
-          {/* Active Article Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {paginatedGuides.map((post, postIdx) => {
-              const catDetails = getCategoryDetails(post.category);
-              return (
-                <div
-                  key={post.slug}
-                  onClick={() => onNavigate(`guides/${post.slug}`)}
-                  className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-slate-700 p-6 rounded-2xl shadow-sm hover:shadow-md cursor-pointer transition-all duration-300 flex flex-col justify-between group h-full"
+                
+                {/* Visual Cover Accent (Beautiful color gradients instead of heavy broken image placeholders) */}
+                <div className={`relative h-32 bg-gradient-to-tr from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 p-6 flex flex-col justify-between overflow-hidden flex-shrink-0
+                  ${isFeaturedHero ? 'lg:w-[35%] lg:h-full lg:min-h-[250px]' : ''}`}
                 >
-                  <div className="space-y-4">
-                    {/* Card Topline */}
-                    <div className="flex items-center justify-between text-[10px] font-semibold text-slate-400">
-                      <span className="flex items-center gap-1 text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/30 px-2 py-0.5 rounded-md border border-blue-100/30">
-                        {renderCategoryIcon(catDetails.icon, "w-3 h-3")}
-                        {catDetails.name}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Lucide.Clock className="w-3.5 h-3.5" />
-                        {post.readTime}
-                      </span>
-                    </div>
-
-                    {/* Card Heading */}
-                    <div className="space-y-2">
-                      <h3 className="font-display text-base font-extrabold text-slate-850 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
-                        {post.title}
-                      </h3>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
-                        {post.summary}
-                      </p>
-                    </div>
+                  {/* Subtle vector grid overlays for professional touch */}
+                  <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                  
+                  <div className="z-10 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg p-2 self-start border border-white/10">
+                    {renderCategoryIcon(catInfo.icon, "w-6 h-6 text-white")}
                   </div>
 
-                  {/* Card Bottom line */}
-                  <div className="border-t border-slate-50 dark:border-slate-800/80 mt-5 pt-4 flex items-center justify-between text-xs">
-                    <span className="text-[10px] text-slate-400 dark:text-slate-500">
-                      Formulas & Mathematical Proofs Included
-                    </span>
-                    <span className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                      Read
+                  <span className="z-10 text-[9px] font-extrabold text-blue-300 bg-blue-900/30 px-2 py-0.5 rounded border border-blue-500/20 tracking-wider uppercase self-start">
+                    {catInfo.name}
+                  </span>
+                </div>
+
+                {/* Article Card Context */}
+                <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-[11px] text-slate-400 font-semibold">
+                      <span>{article.publishDate}</span>
+                      <span>•</span>
+                      <span>{article.readTime}</span>
+                    </div>
+
+                    <h3 className={`font-display font-black text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2
+                      ${isFeaturedHero ? 'text-lg sm:text-xl lg:text-2xl' : 'text-sm sm:text-base'}`}
+                    >
+                      {article.title}
+                    </h3>
+
+                    <p className={`text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed line-clamp-3`}>
+                      {article.summary}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-50 dark:border-slate-850">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-850 text-slate-700 dark:text-slate-350 flex items-center justify-center font-bold text-[9px]">
+                        {article.author.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-600 dark:text-slate-300">{article.author}</span>
+                    </div>
+
+                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1 group-hover:translate-x-1.5 transition-transform duration-200">
+                      Read Article
                       <Lucide.ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
 
-          {/* Simple Pagination Controls */}
-          {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-2 pt-6">
-              <button
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
-                className="p-2 border border-slate-150 dark:border-slate-800 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                title="Previous Page"
-              >
-                <Lucide.ChevronLeft className="w-4 h-4 text-slate-600 dark:text-slate-350" />
-              </button>
-              
-              <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                Page <span className="font-bold text-slate-800 dark:text-slate-200">{currentPage}</span> of {totalPages}
               </div>
-
-              <button
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
-                className="p-2 border border-slate-150 dark:border-slate-800 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                title="Next Page"
-              >
-                <Lucide.ChevronRight className="w-4 h-4 text-slate-600 dark:text-slate-350" />
-              </button>
-            </div>
-          )}
-
+            );
+          })}
         </div>
 
       </div>
-
-      {/* Suggest / Bottom Interactive widget */}
-      <div className="bg-slate-100 dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-3xl p-8 mt-16 text-center space-y-4">
-        <h3 className="font-display text-lg font-bold text-slate-850 dark:text-white">Looking for a specific mathematical formula or model?</h3>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
-          Our financial engineering team is constantly building new planners, amortization matrices, and capital gains projections. If you need a custom formula calculated, drop us a line!
-        </p>
-        <button
-          onClick={() => onNavigate('contact')}
-          className="px-6 py-2.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 font-bold text-xs rounded-xl border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
-        >
-          Submit Request to Engineering
-        </button>
-      </div>
-
     </div>
   );
 }

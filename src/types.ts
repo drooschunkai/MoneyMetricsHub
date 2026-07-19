@@ -80,3 +80,17 @@ export interface GuideDefinition {
   content: string; // Markdown or rich structure
   faqs?: FAQItem[];
 }
+
+export interface BlogArticle {
+  slug: string;
+  title: string;
+  metaDescription: string;
+  readTime: string;
+  category: string; // matches CategoryDefinition.id
+  publishDate: string;
+  author: string;
+  summary: string;
+  content: string; // HTML/TSX structured content
+  tags: string[];
+}
+

@@ -120,7 +120,7 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
               </button>
               <button 
                 onClick={() => onNavigate('blog')} 
-                className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors ${activeRoute === 'blog' || activeRoute === 'guide' ? 'text-blue-600 dark:text-blue-400 font-bold' : 'text-slate-600 dark:text-slate-300'}`}
+                className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer transition-colors ${activeRoute === 'blog' ? 'text-blue-600 dark:text-blue-400 font-bold' : 'text-slate-600 dark:text-slate-300'}`}
               >
                 Blog
               </button>
@@ -208,8 +208,7 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
               >
                 Home
               </button>
-
-
+              
               <div className="border-t border-slate-100 dark:border-slate-800 pt-2">
                 <button
                   onClick={() => {
@@ -254,7 +253,7 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
                   }}
                   className="text-left font-semibold text-slate-700 dark:text-slate-200 text-sm py-1 px-2 hover:bg-slate-50 dark:hover:bg-slate-800 rounded transition-colors"
                 >
-                  Blog / Wealth Guides
+                  Blog
                 </button>
                 <button
                   onClick={() => {
@@ -362,11 +361,6 @@ export default function Layout({ children, activeRoute, onNavigate }: LayoutProp
             <div className="lg:col-span-2 space-y-4">
               <h4 className="text-xs font-bold text-slate-200 uppercase tracking-widest">Sitemaps & Tools</h4>
               <ul className="space-y-2 text-xs">
-                <li>
-                  <button onClick={() => onNavigate('blog')} className="hover:text-white transition-colors cursor-pointer text-left">
-                    Blog & Wealth Guides
-                  </button>
-                </li>
                 <li>
                   <button onClick={() => onNavigate('newsletter')} className="hover:text-white transition-colors cursor-pointer text-left">
                     Newsletter Signup
