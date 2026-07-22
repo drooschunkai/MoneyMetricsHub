@@ -39,9 +39,26 @@ export default function BlogView({ articleSlug, onNavigate }: BlogViewProps) {
   // Filter articles based on category pill selection & search input
   const filteredArticles = blogArticles.filter(article => {
     const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
-    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          article.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return matchesCategory;
+
+    const normalizedQuery = query.replace(/[-_]/g, ' ');
+    const articleSlug = article.slug.toLowerCase();
+    const articleTitle = article.title.toLowerCase();
+    const articleSummary = article.summary.toLowerCase();
+
+    const matchesSearch = 
+      articleSlug.includes(query) ||
+      articleSlug.replace(/[-_]/g, ' ').includes(normalizedQuery) ||
+      articleTitle.includes(query) || 
+      articleTitle.includes(normalizedQuery) ||
+      articleSummary.includes(query) ||
+      articleSummary.includes(normalizedQuery) ||
+      article.tags.some(tag => {
+        const t = tag.toLowerCase();
+        return t.includes(query) || t.includes(normalizedQuery);
+      });
+
     return matchesCategory && matchesSearch;
   });
 
