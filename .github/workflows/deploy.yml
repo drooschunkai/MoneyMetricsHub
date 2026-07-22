@@ -1,0 +1,37 @@
+name: Build & Prerender Deploy Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-prerender:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint & Typecheck
+        run: npm run lint
+
+      - name: Execute Full Production Build & Prerender
+        # This executes: vite build && tsx prerender.ts && esbuild server.ts
+        run: npm run build
+
+      - name: Verify Prerender Outputs Exist
+        run: |
+          test -f dist/index.html || (echo "Missing dist/index.html" && exit 1)
+          test -f dist/blog/index.html || (echo "Missing dist/blog/index.html" && exit 1)
+          test -f dist/blog/rent-vs-buy-opportunity-cost-math/index.html || (echo "Missing blog prerendered routes" && exit 1)
+          echo "Prerender verification succeeded!"
