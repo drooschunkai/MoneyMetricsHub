@@ -17,6 +17,7 @@ import DashboardView from './components/DashboardView';
 import ComparisonView from './components/ComparisonView';
 import NotFoundView from './components/NotFoundView';
 import BlogView from './components/BlogView';
+import { legacyBlogRedirects } from './data/redirects';
 
 interface RouteState {
   name: string;
@@ -108,6 +109,14 @@ function parseLocation(): RouteState {
   }
   if (path.startsWith('/blog/')) {
     const slug = extractSlug('/blog/');
+    if (legacyBlogRedirects[slug]) {
+      const targetUrl = legacyBlogRedirects[slug];
+      if (typeof window !== 'undefined') {
+        window.history.replaceState(null, '', targetUrl);
+      }
+      const targetSlug = targetUrl.replace('/blog/', '');
+      return { name: 'blog', params: { slug: targetSlug } };
+    }
     return { name: 'blog', params: { slug } };
   }
 

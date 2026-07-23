@@ -13,6 +13,7 @@ import { blogArticles } from './src/data/blog';
 import { guides } from './src/data/guides';
 import { programmaticSEOPages } from './src/data/programmaticSEO';
 import { categoryVideos } from './src/data/categoryVideos';
+import { generateSitemapXml } from './src/utils/generateSitemap';
 
 const BASE_URL = 'https://moneymetrichubs.com';
 const DIST_DIR = path.join(__dirname, 'dist');
@@ -1060,5 +1061,15 @@ const dashboardContent = `
 `;
 generatePage('dashboard', 'Google Search Console Metrics | Money Metric Hubs', 'A real-time search engine optimization (SEO) transparency report and performance dashboard for Money Metric Hubs.', 'basic', dashboardContent);
 generatePage('search-console', 'Google Search Console Metrics | Money Metric Hubs', 'A real-time search engine optimization (SEO) transparency report and performance dashboard for Money Metric Hubs.', 'basic', dashboardContent);
+
+// GENERATE SITEMAP.XML FROM CORE DATA SOURCES
+const todayIso = new Date().toISOString().split('T')[0];
+const generatedXml = generateSitemapXml(todayIso);
+const publicSitemapPath = path.join(__dirname, 'public', 'sitemap.xml');
+const distSitemapPath = path.join(DIST_DIR, 'sitemap.xml');
+
+fs.writeFileSync(publicSitemapPath, generatedXml, 'utf-8');
+fs.writeFileSync(distSitemapPath, generatedXml, 'utf-8');
+console.log(`Generated sitemap.xml dynamically from data sources (${blogArticles.length} blog articles included)`);
 
 console.log('--- ALL PAGES SUCCESSFULY PRERENDERED ---');

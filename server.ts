@@ -2,11 +2,23 @@ import express from "express";
 import path from "path";
 import fs from "fs";
 import { createServer as createViteServer } from "vite";
+import { legacyBlogRedirects } from "./src/data/redirects";
 
 async function startServer() {
   const app = express();
   const PORT = 3000;
   const isProd = process.env.NODE_ENV === "production";
+
+  // 301 Moved Permanently redirects for legacy blog URLs
+  app.use((req, res, next) => {
+    const cleanPath = req.path.replace(/\/+$/, "");
+    const slug = cleanPath.startsWith("/blog/") ? cleanPath.replace("/blog/", "") : "";
+    if (slug && legacyBlogRedirects[slug]) {
+      console.log(`[301 Redirect] ${req.path} -> ${legacyBlogRedirects[slug]}`);
+      return res.redirect(301, legacyBlogRedirects[slug]);
+    }
+    next();
+  });
 
   // Optional server-side health checks
   app.get("/api/health", (req, res) => {
