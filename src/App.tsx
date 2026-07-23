@@ -25,8 +25,18 @@ interface RouteState {
 
 // Helper to parse the current window path/query into a RouteState
 function parseLocation(): RouteState {
-  const path = window.location.pathname;
+  let path = window.location.pathname || '/';
   const search = window.location.search;
+
+  // Normalize path by stripping trailing slashes (except root '/')
+  if (path.length > 1 && path.endsWith('/')) {
+    path = path.replace(/\/+$/, '');
+  }
+
+  // Helper to extract clean slug without trailing slashes
+  const extractSlug = (prefix: string) => {
+    return path.replace(prefix, '').replace(/\/+$/, '');
+  };
 
   // 1. Home path
   if (path === '/' || path === '') {
@@ -34,25 +44,25 @@ function parseLocation(): RouteState {
   }
 
   // Categories overview: /categories
-  if (path === '/categories' || path === '/categories/') {
+  if (path === '/categories') {
     return { name: 'categories', params: {} };
   }
 
   // 2. Categories path: /categories/:slug
   if (path.startsWith('/categories/')) {
-    const slug = path.replace('/categories/', '');
+    const slug = extractSlug('/categories/');
     return { name: 'category', params: { slug } };
   }
 
   // 3. Calculators path: /calculators/:slug
   if (path.startsWith('/calculators/')) {
-    const slug = path.replace('/calculators/', '');
+    const slug = extractSlug('/calculators/');
     return { name: 'calculator', params: { slug } };
   }
 
   // 4. Guides path: /guides/:slug
   if (path.startsWith('/guides/')) {
-    const slug = path.replace('/guides/', '');
+    const slug = extractSlug('/guides/');
     return { name: 'guide', params: { slug } };
   }
 
@@ -65,23 +75,23 @@ function parseLocation(): RouteState {
 
   // 6. Phase 1 Programmatic SEO Template Routes
   if (path.startsWith('/mortgage/')) {
-    const slug = path.replace('/mortgage/', '');
+    const slug = extractSlug('/mortgage/');
     return { name: 'seo-page', params: { slug } };
   }
   if (path.startsWith('/compound-interest/')) {
-    const slug = path.replace('/compound-interest/', '');
+    const slug = extractSlug('/compound-interest/');
     return { name: 'seo-page', params: { slug } };
   }
   if (path.startsWith('/retirement/')) {
-    const slug = path.replace('/retirement/', '');
+    const slug = extractSlug('/retirement/');
     return { name: 'seo-page', params: { slug } };
   }
   if (path.startsWith('/fire/')) {
-    const slug = path.replace('/fire/', '');
+    const slug = extractSlug('/fire/');
     return { name: 'seo-page', params: { slug } };
   }
   if (path.startsWith('/salary/')) {
-    const slug = path.replace('/salary/', '');
+    const slug = extractSlug('/salary/');
     return { name: 'seo-page', params: { slug } };
   }
 
@@ -93,11 +103,11 @@ function parseLocation(): RouteState {
   if (path === '/preferences' || path === '/hub') return { name: 'preferences', params: {} };
 
   // Blog routes
-  if (path === '/blog' || path === '/blog/') {
+  if (path === '/blog') {
     return { name: 'blog', params: {} };
   }
   if (path.startsWith('/blog/')) {
-    const slug = path.replace('/blog/', '');
+    const slug = extractSlug('/blog/');
     return { name: 'blog', params: { slug } };
   }
 
