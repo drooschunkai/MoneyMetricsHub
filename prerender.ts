@@ -12,6 +12,7 @@ import { calculators } from './src/data/calculators';
 import { blogArticles } from './src/data/blog';
 import { guides } from './src/data/guides';
 import { programmaticSEOPages } from './src/data/programmaticSEO';
+import { categoryVideos } from './src/data/categoryVideos';
 
 const BASE_URL = 'https://moneymetrichubs.com';
 const DIST_DIR = path.join(__dirname, 'dist');
@@ -449,11 +450,24 @@ generatePage('categories', 'Financial Calculator Categories | Money Metric Hubs'
 // ==========================================
 categories.forEach(cat => {
   const catCalcs = calculators.filter(calc => calc.category === cat.id);
+  const video = categoryVideos[cat.slug] || categoryVideos[cat.id];
   const categoryContent = `
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 animate-fade-in">
-      <div class="border-b border-slate-100 dark:border-slate-800 pb-6 space-y-2">
-        <h1 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">${cat.name} Calculators</h1>
-        <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed">${cat.description}</p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 bg-white dark:bg-slate-900 p-8 md:p-10 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-3">
+          <span class="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400 block">Financial Channel</span>
+          <h1 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">${cat.name} Calculators</h1>
+          <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed">${cat.description}</p>
+        </div>
+        ${video ? `
+        <div class="lg:col-span-5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-red-500"></span>
+            <h3 class="font-display font-bold text-slate-900 dark:text-white text-sm">${video.title}</h3>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400">${video.description}</p>
+        </div>
+        ` : ''}
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

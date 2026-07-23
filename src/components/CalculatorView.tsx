@@ -422,7 +422,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                       min={input.min}
                       max={input.max}
                       step={input.step || 1}
-                      value={inputs[input.id]}
+                      value={inputs[input.id] ?? input.defaultValue ?? 0}
                       onChange={(e) => handleInputChange(input.id, Number(e.target.value))}
                       className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
                     />
@@ -434,7 +434,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                 ) : input.type === 'select' ? (
                   <select
                     id={`input-${input.id}`}
-                    value={inputs[input.id]}
+                    value={inputs[input.id] ?? input.defaultValue ?? ''}
                     onChange={(e) => handleInputChange(input.id, Number(e.target.value))}
                     className="w-full bg-slate-50/50 dark:bg-slate-950/20 hover:bg-slate-50 dark:hover:bg-slate-800 focus:bg-white dark:focus:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-blue-500 rounded-xl px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 font-medium transition-all outline-none cursor-pointer duration-200"
                   >
@@ -448,7 +448,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                   <input
                     id={`input-${input.id}`}
                     type="checkbox"
-                    checked={inputs[input.id]}
+                    checked={Boolean(inputs[input.id])}
                     onChange={(e) => handleInputChange(input.id, e.target.checked)}
                     className="w-5 h-5 rounded border-slate-200 dark:border-slate-800 dark:bg-slate-950/20 text-blue-600 focus:ring-blue-500"
                   />
@@ -467,8 +467,8 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                         min={input.min}
                         max={input.max}
                         step={input.step || 1}
-                        value={inputs[input.id]}
-                        onChange={(e) => handleInputChange(input.id, Number(e.target.value))}
+                        value={inputs[input.id] ?? ''}
+                        onChange={(e) => handleInputChange(input.id, e.target.value === '' ? '' : Number(e.target.value))}
                         className={`w-full bg-slate-50/50 dark:bg-slate-950/20 hover:bg-slate-50 dark:hover:bg-slate-800 focus:bg-white dark:focus:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:border-blue-500 rounded-xl py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-100 transition-colors outline-none ${input.prefix ? 'pl-7' : 'pl-4'} ${input.suffix ? 'pr-12' : 'pr-4'}`}
                       />
                       {input.suffix && (
@@ -484,7 +484,7 @@ export default function CalculatorView({ calculatorSlug, onNavigate, initialOver
                         min={input.min}
                         max={input.max}
                         step={input.step || 1}
-                        value={inputs[input.id]}
+                        value={inputs[input.id] ?? input.defaultValue ?? 0}
                         onChange={(e) => handleInputChange(input.id, Number(e.target.value))}
                         className="w-full h-1 bg-slate-100 dark:bg-slate-800 rounded appearance-none cursor-pointer accent-blue-500"
                       />

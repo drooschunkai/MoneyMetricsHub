@@ -233,7 +233,15 @@ export function PrivacyView() {
         </li>
       </ul>
 
-      <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-4">4. Third-Party Links</h3>
+      <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-4">4. Embedded YouTube Video Content & Cookies</h3>
+      <p>
+        Our category overview pages feature embedded educational video explainers hosted on YouTube. To protect user privacy and minimize upfront tracking, videos are integrated using YouTube's privacy-enhanced domain (<code>https://www.youtube-nocookie.com</code>) and are lazy-loaded on demand.
+      </p>
+      <p className="mt-2">
+        No cookies or tracking requests are initiated by YouTube when you browse category pages until you actively click the video play button. Once played, YouTube (Google) may set cookies or HTML5 local storage on your device to track video views, evaluate playback quality, and gather aggregated demographic analytics. By playing an embedded video, you acknowledge YouTube's data collection under <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 font-semibold">Google's Privacy Policy</a>.
+      </p>
+
+      <h3 className="font-display text-lg font-bold text-slate-950 dark:text-white pt-4">5. Third-Party Links</h3>
       <p>
         Our calculators provide outward reference hyperlinks to official regulatory bodies (such as IRS.gov, SEC.gov, FDIC.gov) or educational resources (such as Investopedia). We do not bear responsibility for the privacy practices of external platforms.
       </p>

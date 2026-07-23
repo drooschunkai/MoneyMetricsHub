@@ -97,7 +97,7 @@ export default function UserHub({ onNavigate }: UserHubProps) {
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">Preferred Currency</label>
               <select
-                value={prefs.currency}
+                value={prefs.currency || 'USD'}
                 onChange={(e) => handlePrefChange('currency', e.target.value as any)}
                 className="w-full text-xs font-semibold p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 focus:outline-none"
               >
@@ -115,7 +115,7 @@ export default function UserHub({ onNavigate }: UserHubProps) {
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">Country & Tax Context</label>
               <select
-                value={prefs.country}
+                value={prefs.country || 'US'}
                 onChange={(e) => handlePrefChange('country', e.target.value as any)}
                 className="w-full text-xs font-semibold p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 focus:outline-none"
               >
@@ -130,7 +130,7 @@ export default function UserHub({ onNavigate }: UserHubProps) {
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">Number Formatting Style</label>
               <select
-                value={prefs.numberFormat}
+                value={prefs.numberFormat || 'us'}
                 onChange={(e) => handlePrefChange('numberFormat', e.target.value as any)}
                 className="w-full text-xs font-semibold p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 focus:outline-none"
               >
@@ -147,7 +147,7 @@ export default function UserHub({ onNavigate }: UserHubProps) {
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">Tax Structure Tier</label>
               <select
-                value={prefs.taxRegion}
+                value={prefs.taxRegion || 'standard'}
                 onChange={(e) => handlePrefChange('taxRegion', e.target.value)}
                 className="w-full text-xs font-semibold p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 focus:outline-none"
               >

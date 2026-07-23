@@ -1,6 +1,8 @@
 import * as Lucide from 'lucide-react';
 import { categories } from '../data/categories';
 import { calculators } from '../data/calculators';
+import { categoryVideos } from '../data/categoryVideos';
+import CategoryVideoEmbed from './CategoryVideoEmbed';
 import SEO from './SEO';
 
 interface CategoryViewProps {
@@ -10,6 +12,7 @@ interface CategoryViewProps {
 
 export default function CategoryView({ categorySlug, onNavigate }: CategoryViewProps) {
   const category = categories.find((cat) => cat.slug === categorySlug);
+  const videoConfig = category ? categoryVideos[category.slug] || categoryVideos[category.id] : null;
 
   // Fallback if category not found
   if (!category) {
@@ -58,31 +61,46 @@ export default function CategoryView({ categorySlug, onNavigate }: CategoryViewP
         <span className="text-slate-800 dark:text-slate-200 font-medium">{category.name}</span>
       </nav>
 
-      {/* Hero Header */}
-      <div className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center transition-colors duration-200">
-        <div className="md:col-span-8 space-y-4">
-          <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-            {renderIcon(category.icon)}
+      {/* Hero Header & Video Explainer Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Left Column: Category Description & Metrics */}
+        <div className="lg:col-span-7 bg-white dark:bg-slate-900 p-8 md:p-10 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6 transition-colors duration-200">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center flex-shrink-0">
+              {renderIcon(category.icon, "w-8 h-8")}
+            </div>
+            <div>
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400 block">Financial Channel</span>
+              <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                {category.name} Calculators
+              </h1>
+            </div>
           </div>
-          <h1 className="font-display text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            {category.name} Calculators
-          </h1>
-          <p className="text-slate-600 dark:text-slate-300 text-base max-w-2xl leading-relaxed">
+
+          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
             {category.description}
           </p>
-        </div>
-        <div className="md:col-span-4 bg-slate-50 dark:bg-slate-950/20 p-6 rounded-2xl border border-slate-100 dark:border-slate-800">
-          <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Category Metrics</h4>
-          <div className="space-y-2">
-            <div className="flex justify-between text-sm">
-              <span className="text-slate-500 dark:text-slate-400">Available Calculators:</span>
-              <span className="font-semibold text-slate-800 dark:text-slate-200 font-mono">{matchingCalculators.length}</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-slate-500 dark:text-slate-400">Methodology Status:</span>
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400">Verified</span>
+
+          <div className="bg-slate-50 dark:bg-slate-950/40 p-5 rounded-2xl border border-slate-100 dark:border-slate-800">
+            <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Category Overview Metrics</h4>
+            <div className="grid grid-cols-2 gap-4 text-xs sm:text-sm">
+              <div>
+                <span className="text-slate-500 dark:text-slate-400 block text-xs">Available Calculators:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-200 font-mono text-base">{matchingCalculators.length}</span>
+              </div>
+              <div>
+                <span className="text-slate-500 dark:text-slate-400 block text-xs">Methodology Status:</span>
+                <span className="font-semibold text-emerald-600 dark:text-emerald-400">Verified Math</span>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Right Column: Video Explainer Embed */}
+        <div className="lg:col-span-5">
+          {videoConfig && (
+            <CategoryVideoEmbed video={videoConfig} categoryName={category.name} />
+          )}
         </div>
       </div>
 
